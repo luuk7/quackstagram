@@ -1,5 +1,5 @@
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 // Represents a picture on Quackstagram
 class Picture {
@@ -26,8 +26,19 @@ class Picture {
     }
 
     // Getter methods for picture details
-    public String getImagePath() { return imagePath; }
-    public String getCaption() { return caption; }
-    public int getLikesCount() { return likesCount; }
-    public List<String> getComments() { return comments; }
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public String getCaption() {
+        return caption;
+    }
+
+    public int getLikesCount() {
+        return likesCount;
+    }
+
+    public List<String> getComments() {
+        return comments;
+    }
 }

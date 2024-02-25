@@ -1,27 +1,24 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import javax.imageio.ImageIO;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class SignUpUI extends JFrame {
 
     private static final int WIDTH = 300;
     private static final int HEIGHT = 500;
-
+    private final String credentialsFilePath = "data/credentials.txt";
+    private final String profilePhotoStoragePath = "img/storage/profile/";
     private JTextField txtUsername;
     private JTextField txtPassword;
     private JTextField txtBio;
     private JButton btnRegister;
     private JLabel lblPhoto;
     private JButton btnUploadPhoto;
-    private final String credentialsFilePath = "data/credentials.txt";
-    private final String profilePhotoStoragePath = "img/storage/profile/";
     private JButton btnSignIn;
 
 
@@ -75,7 +72,7 @@ public class SignUpUI extends JFrame {
         fieldsPanel.add(Box.createVerticalStrut(10));
         fieldsPanel.add(txtBio);
         btnUploadPhoto = new JButton("Upload Photo");
-        
+
         btnUploadPhoto.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -98,15 +95,12 @@ public class SignUpUI extends JFrame {
         registerPanel.setBackground(Color.WHITE); // Background for the panel
         registerPanel.add(btnRegister, BorderLayout.CENTER);
 
-      
-
-       
 
         // Adding components to the frame
         add(headerPanel, BorderLayout.NORTH);
         add(fieldsPanel, BorderLayout.CENTER);
         add(registerPanel, BorderLayout.SOUTH);
-         // Adding the sign in button to the register panel or another suitable panel
+        // Adding the sign in button to the register panel or another suitable panel
         btnSignIn = new JButton("Already have an account? Sign In");
         btnSignIn.addActionListener(new ActionListener() {
             @Override
@@ -129,15 +123,15 @@ public class SignUpUI extends JFrame {
             saveCredentials(username, password, bio);
             handleProfilePictureUpload();
             dispose();
-    
-        // Open the SignInUI frame
-        SwingUtilities.invokeLater(() -> {
-            SignInUI signInFrame = new SignInUI();
-            signInFrame.setVisible(true);
-        });
+
+            // Open the SignInUI frame
+            SwingUtilities.invokeLater(() -> {
+                SignInUI signInFrame = new SignInUI();
+                signInFrame.setVisible(true);
+            });
         }
     }
-    
+
     private boolean doesUsernameExist(String username) {
         try (BufferedReader reader = new BufferedReader(new FileReader(credentialsFilePath))) {
             String line;
@@ -152,8 +146,8 @@ public class SignUpUI extends JFrame {
         return false;
     }
 
-     // Method to handle profile picture upload
-     private void handleProfilePictureUpload() {
+    // Method to handle profile picture upload
+    private void handleProfilePictureUpload() {
         JFileChooser fileChooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Image files", ImageIO.getReaderFileSuffixes());
         fileChooser.setFileFilter(filter);
@@ -172,7 +166,7 @@ public class SignUpUI extends JFrame {
             e.printStackTrace();
         }
     }
-    
+
     private void saveCredentials(String username, String password, String bio) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("data/credentials.txt", true))) {
             writer.write(username + ":" + password + ":" + bio);
@@ -181,7 +175,7 @@ public class SignUpUI extends JFrame {
             e.printStackTrace();
         }
     }
-        
+
     private void openSignInUI() {
         // Close the SignUpUI frame
         dispose();

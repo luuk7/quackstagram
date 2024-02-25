@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_INJECTED_CODE" value="false" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9c165c8b-9bb0-4f72-adbc-445918410f94" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/ExploreUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ExploreUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageLikesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageLikesManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ImageUploadUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageUploadUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/InstagramProfileUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InstagramProfileUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NotificationsUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NotificationsUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Picture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Picture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/QuakstagramHomeUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/QuakstagramHomeUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignInUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SignInUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignUpUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SignUpUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserRelationshipManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UserRelationshipManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/credentials.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/credentials.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/users.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/users.txt" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2crglCr8wBhAX2e5mCkDbsgfNBa" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "extract.method.default.visibility": "private",
+    "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "openjdk-21",
+    "last_opened_file_path": "C:/Users/Dimitris T/Desktop/Projects/quackstagram/src",
+    "onboarding.tips.debug.path": "C:/Users/Dimitris T/Desktop/Projects/quackstagram/SignInUI.java",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Dimitris T\Desktop\Projects\quackstagram\src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Dimitris T\Desktop\Projects\quackstagram\src" />
+      <recent name="C:\Users\Dimitris T\Desktop\Projects\quackstagram" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.quackstagram.SignInUI">
+    <configuration name="SignInUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="$USER_HOME$/.jdks/openjdk-21.0.1" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="SignInUI" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="quackstagram.SignInUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="SignInUI" />
+      <module name="quackstagram" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="quackstagram.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.quackstagram.SignInUI" />
+        <item itemvalue="Application.SignInUI" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9c165c8b-9bb0-4f72-adbc-445918410f94" name="Changes" comment="" />
+      <created>1708875259117</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1708875259117</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/SignInUI.java</url>
+          <line>110</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
