@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
-public class NotificationsUI extends JFrame {
+public class NotificationsUI extends JFrame implements FrameManager{
 
     private static final int WIDTH = 300;
     private static final int HEIGHT = 500;
@@ -162,12 +162,7 @@ public class NotificationsUI extends JFrame {
 
     }
 
-    private void ImageUploadUI() {
-        // Open InstagramProfileUI frame
-        this.dispose();
-        ImageUploadUI upload = new ImageUploadUI();
-        upload.setVisible(true);
-    }
+
 
 
     private void openProfileUI() {
@@ -189,26 +184,31 @@ public class NotificationsUI extends JFrame {
         profileUI.setVisible(true);
     }
 
-    private void notificationsUI() {
+    private void ImageUploadUI() {
         // Open InstagramProfileUI frame
-        this.dispose();
-        NotificationsUI notificationsUI = new NotificationsUI();
-        notificationsUI.setVisible(true);
+
+        disposeAndCreate(this, new ImageUploadUI());
+    }
+
+    private void notificationsUI() {
+
+        disposeAndCreate(this, new NotificationsUI());
     }
 
     private void openHomeUI() {
-        // Open InstagramProfileUI frame
-        this.dispose();
-        QuakstagramHomeUI homeUI = new QuakstagramHomeUI();
-        homeUI.setVisible(true);
+
+        disposeAndCreate(this, new QuakstagramHomeUI());
     }
 
-
     private void exploreUI() {
-        // Open InstagramProfileUI frame
-        this.dispose();
-        ExploreUI explore = new ExploreUI();
-        explore.setVisible(true);
+
+        disposeAndCreate(this, new ExploreUI());
+    }
+
+    @Override
+    public void disposeAndCreate(JFrame oldFrame, JFrame newFrame) {
+        oldFrame.dispose();
+        newFrame.setVisible(true);
     }
 
 }

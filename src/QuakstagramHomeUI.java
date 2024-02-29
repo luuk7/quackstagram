@@ -20,7 +20,7 @@ import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class QuakstagramHomeUI extends JFrame {
+public class QuakstagramHomeUI extends JFrame implements FrameManager{
     private static final int WIDTH = 300;
     private static final int HEIGHT = 500;
     private static final int NAV_ICON_SIZE = 20; // Corrected static size for bottom icons
@@ -427,33 +427,32 @@ private String[][] createSampleData() {
         InstagramProfileUI profileUI = new InstagramProfileUI(user);
         profileUI.setVisible(true);
     }
- 
-     private void notificationsUI() {
-        // Open InstagramProfileUI frame
-        this.dispose();
-        NotificationsUI notificationsUI = new NotificationsUI();
-        notificationsUI.setVisible(true);
-    }
 
     private void ImageUploadUI() {
         // Open InstagramProfileUI frame
-        this.dispose();
-        ImageUploadUI upload = new ImageUploadUI();
-        upload.setVisible(true);
+
+        disposeAndCreate(this, new ImageUploadUI());
     }
- 
+
+    private void notificationsUI() {
+
+        disposeAndCreate(this, new NotificationsUI());
+    }
+
     private void openHomeUI() {
-        // Open InstagramProfileUI frame
-        this.dispose();
-        QuakstagramHomeUI homeUI = new QuakstagramHomeUI();
-        homeUI.setVisible(true);
+
+        disposeAndCreate(this, new QuakstagramHomeUI());
     }
- 
+
     private void exploreUI() {
-        // Open InstagramProfileUI frame
-        this.dispose();
-        ExploreUI explore = new ExploreUI();
-        explore.setVisible(true);
+
+        disposeAndCreate(this, new ExploreUI());
+    }
+
+    @Override
+    public void disposeAndCreate(JFrame oldFrame, JFrame newFrame) {
+        oldFrame.dispose();
+        newFrame.setVisible(true);
     }
 
 
