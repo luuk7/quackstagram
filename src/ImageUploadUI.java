@@ -30,8 +30,6 @@ public class ImageUploadUI extends JFrame{
     }
 
     private void initializeUI() {
-        JPanel headerPanel = createHeaderPanel(); // Reuse the createHeaderPanel method
-
         // Main content panel
         JPanel contentPanel = new JPanel();
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
@@ -68,9 +66,9 @@ public class ImageUploadUI extends JFrame{
         saveButton.addActionListener(this::saveBioAction);
 
         // Add panels to frame
-        add(headerPanel, BorderLayout.NORTH);
+        add(Components.getHeaderPanel("Upload image"), BorderLayout.NORTH);
         add(contentPanel, BorderLayout.CENTER);
-        add(Components.navigationPanel, BorderLayout.SOUTH);
+        add(Components.getNavigationPanel(), BorderLayout.SOUTH);
     }
 
 
@@ -190,20 +188,6 @@ public class ImageUploadUI extends JFrame{
         String bioText = bioTextArea.getText();
         // For example, save the bio text to a file or database
         JOptionPane.showMessageDialog(this, "Caption saved: " + bioText);
-    }
-
-    private JPanel createHeaderPanel() {
-
-        // Header Panel (reuse from InstagramProfileUI or customize for home page)
-        // Header with the Register label
-        JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        headerPanel.setBackground(new Color(51, 51, 51)); // Set a darker background for the header
-        JLabel lblRegister = new JLabel(" Upload Image 🐥");
-        lblRegister.setFont(new Font("Arial", Font.BOLD, 16));
-        lblRegister.setForeground(Color.WHITE); // Set the text color to white
-        headerPanel.add(lblRegister);
-        headerPanel.setPreferredSize(new Dimension(WIDTH, 40)); // Give the header a fixed height
-        return headerPanel;
     }
 
     private String readUsername() throws IOException {

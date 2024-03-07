@@ -34,14 +34,12 @@ public class ExploreUI extends JFrame {
 
         getContentPane().removeAll(); // Clear existing components
         setLayout(new BorderLayout()); // Reset the layout manager
-
-        JPanel headerPanel = createHeaderPanel(); // Method from your InstagramProfileUI class
         JPanel mainContentPanel = createMainContentPanel();
 
         // Add panels to the frame
-        add(headerPanel, BorderLayout.NORTH);
+        add(Components.getHeaderPanel("Explore"), BorderLayout.NORTH);
         add(mainContentPanel, BorderLayout.CENTER);
-        add(Components.navigationPanel, BorderLayout.SOUTH);
+        add(Components.getNavigationPanel(), BorderLayout.SOUTH);
 
         revalidate();
         repaint();
@@ -91,26 +89,13 @@ public class ExploreUI extends JFrame {
         return mainContentPanel;
     }
 
-    private JPanel createHeaderPanel() {
-        // Header Panel (reuse from InstagramProfileUI or customize for home page)
-        // Header with the Register label
-        JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        headerPanel.setBackground(new Color(51, 51, 51)); // Set a darker background for the header
-        JLabel lblRegister = new JLabel(" Explore 🐥");
-        lblRegister.setFont(new Font("Arial", Font.BOLD, 16));
-        lblRegister.setForeground(Color.WHITE); // Set the text color to white
-        headerPanel.add(lblRegister);
-        headerPanel.setPreferredSize(new Dimension(WIDTH, 40)); // Give the header a fixed height
-        return headerPanel;
-    }
-
     private void displayImage(String imagePath) {
         getContentPane().removeAll();
         setLayout(new BorderLayout());
 
         // Add the header and navigation panels back
-        add(createHeaderPanel(), BorderLayout.NORTH);
-        add(Components.navigationPanel, BorderLayout.SOUTH);
+        add(Components.getHeaderPanel("Image"), BorderLayout.NORTH);
+        add(Components.getNavigationPanel(), BorderLayout.SOUTH);
 
         JPanel imageViewerPanel = new JPanel(new BorderLayout());
 
@@ -181,8 +166,8 @@ public class ExploreUI extends JFrame {
         add(bottomPanel, BorderLayout.SOUTH);
 
         // Re-add the header and navigation panels
-        add(createHeaderPanel(), BorderLayout.NORTH);
-        add(Components.navigationPanel, BorderLayout.SOUTH);
+        add(Components.getHeaderPanel("Image"), BorderLayout.NORTH);
+        add(Components.getNavigationPanel(), BorderLayout.SOUTH);
 
         // Panel for the back button
         JPanel backButtonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -195,9 +180,9 @@ public class ExploreUI extends JFrame {
 
         backButton.addActionListener(e -> {
             getContentPane().removeAll();
-            add(createHeaderPanel(), BorderLayout.NORTH);
+            add(Components.getHeaderPanel("Explore"), BorderLayout.NORTH);
             add(createMainContentPanel(), BorderLayout.CENTER);
-            add(Components.navigationPanel, BorderLayout.SOUTH);
+            add(Components.getNavigationPanel(), BorderLayout.SOUTH);
             revalidate();
             repaint();
         });

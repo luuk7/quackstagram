@@ -33,15 +33,6 @@ public class SignUpUI extends JFrame {
     }
 
     private void initializeUI() {
-        // Header with the Register label
-        JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        headerPanel.setBackground(new Color(51, 51, 51)); // Set a darker background for the header
-        JLabel lblRegister = new JLabel("Quackstagram 🐥");
-        lblRegister.setFont(new Font("Arial", Font.BOLD, 16));
-        lblRegister.setForeground(Color.WHITE); // Set the text color to white
-        headerPanel.add(lblRegister);
-        headerPanel.setPreferredSize(new Dimension(WIDTH, 40)); // Give the header a fixed height
-
         // Profile picture placeholder without border
         lblPhoto = new JLabel();
         lblPhoto.setPreferredSize(new Dimension(80, 80));
@@ -98,7 +89,7 @@ public class SignUpUI extends JFrame {
 
 
         // Adding components to the frame
-        add(headerPanel, BorderLayout.NORTH);
+        add(Components.getHeaderPanel("Quackstagram"), BorderLayout.NORTH);
         add(fieldsPanel, BorderLayout.CENTER);
         add(registerPanel, BorderLayout.SOUTH);
         // Adding the sign in button to the register panel or another suitable panel

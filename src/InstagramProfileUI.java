@@ -119,7 +119,7 @@ public class InstagramProfileUI extends JFrame{
 
         // Re-add the header and navigation panels
         add(headerPanel, BorderLayout.NORTH);
-        add(Components.navigationPanel, BorderLayout.SOUTH);
+        add(Components.getNavigationPanel(), BorderLayout.SOUTH);
 
         // Initialize the image grid
         initializeImageGrid();

@@ -51,21 +51,9 @@ public class QuakstagramHomeUI extends JFrame{
 
         add(cardPanel, BorderLayout.CENTER);
         cardLayout.show(cardPanel, "Home"); // Start with the home view
-        
-         // Header Panel (reuse from InstagramProfileUI or customize for home page)
-          // Header with the Register label
-          JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-          headerPanel.setBackground(new Color(51, 51, 51)); // Set a darker background for the header
-          JLabel lblRegister = new JLabel("🐥 Quackstagram 🐥");
-          lblRegister.setFont(new Font("Arial", Font.BOLD, 16));
-          lblRegister.setForeground(Color.WHITE); // Set the text color to white
-          headerPanel.add(lblRegister);
-          headerPanel.setPreferredSize(new Dimension(WIDTH, 40)); // Give the header a fixed height
-        
-          add(headerPanel, BorderLayout.NORTH);
-
+        add(Components.getHeaderPanel("Quackstagram"), BorderLayout.NORTH);
         // Navigation Panel
-        add(Components.navigationPanel, BorderLayout.SOUTH);
+        add(Components.getNavigationPanel(), BorderLayout.SOUTH);
     }
 
     private void initializeUI() {

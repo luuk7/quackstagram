@@ -12,7 +12,6 @@ public class NotificationsUI extends JFrame{
 
     private static final int WIDTH = 300;
     private static final int HEIGHT = 500;
-    private static final int NAV_ICON_SIZE = 20; // Size for navigation icons
 
     public NotificationsUI() {
         setTitle("Notifications");
@@ -24,8 +23,6 @@ public class NotificationsUI extends JFrame{
     }
 
     private void initializeUI() {
-        // Reuse the header and navigation panel creation methods from the InstagramProfileUI class
-        JPanel headerPanel = createHeaderPanel();
         // Content Panel for notifications
         JPanel contentPanel = new JPanel();
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
@@ -72,9 +69,9 @@ public class NotificationsUI extends JFrame{
             e.printStackTrace();
         }
         // Add panels to frame
-        add(headerPanel, BorderLayout.NORTH);
+        add(Components.getHeaderPanel("Notifications"), BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
-        add(Components.navigationPanel, BorderLayout.SOUTH);
+        add(Components.getNavigationPanel(), BorderLayout.SOUTH);
     }
 
     private String getElapsedTime(String timestamp) {
@@ -96,19 +93,5 @@ public class NotificationsUI extends JFrame{
             timeElapsed.append(minutesBetween).append(" minute").append(minutesBetween > 1 ? "s" : "");
         }
         return timeElapsed.toString();
-    }
-
-    private JPanel createHeaderPanel() {
-
-        // Header Panel (reuse from InstagramProfileUI or customize for home page)
-        // Header with the Register label
-        JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        headerPanel.setBackground(new Color(51, 51, 51)); // Set a darker background for the header
-        JLabel lblRegister = new JLabel(" Notifications 🐥");
-        lblRegister.setFont(new Font("Arial", Font.BOLD, 16));
-        lblRegister.setForeground(Color.WHITE); // Set the text color to white
-        headerPanel.add(lblRegister);
-        headerPanel.setPreferredSize(new Dimension(WIDTH, 40)); // Give the header a fixed height
-        return headerPanel;
     }
 }
