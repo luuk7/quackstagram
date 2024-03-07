@@ -19,7 +19,6 @@ public class ExploreUI extends JFrame {
 
     private static final int WIDTH = 300;
     private static final int HEIGHT = 500;
-    private static final int NAV_ICON_SIZE = 20; // Size for navigation icons
     private static final int IMAGE_SIZE = WIDTH / 3; // Size for each image in the grid
 
     public ExploreUI() {
@@ -37,13 +36,12 @@ public class ExploreUI extends JFrame {
         setLayout(new BorderLayout()); // Reset the layout manager
 
         JPanel headerPanel = createHeaderPanel(); // Method from your InstagramProfileUI class
-        JPanel navigationPanel = createNavigationPanel(); // Method from your InstagramProfileUI class
         JPanel mainContentPanel = createMainContentPanel();
 
         // Add panels to the frame
         add(headerPanel, BorderLayout.NORTH);
         add(mainContentPanel, BorderLayout.CENTER);
-        add(navigationPanel, BorderLayout.SOUTH);
+        add(Components.navigationPanel, BorderLayout.SOUTH);
 
         revalidate();
         repaint();
@@ -93,9 +91,7 @@ public class ExploreUI extends JFrame {
         return mainContentPanel;
     }
 
-
     private JPanel createHeaderPanel() {
-
         // Header Panel (reuse from InstagramProfileUI or customize for home page)
         // Header with the Register label
         JPanel headerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -108,34 +104,13 @@ public class ExploreUI extends JFrame {
         return headerPanel;
     }
 
-    private JPanel createNavigationPanel() {
-        // Create and return the navigation panel
-        JPanel navigationPanel = new JPanel();
-        navigationPanel.setBackground(new Color(249, 249, 249));
-        navigationPanel.setLayout(new BoxLayout(navigationPanel, BoxLayout.X_AXIS));
-        navigationPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-
-        String[] buttonIcons = {"img/icons/home.png", "img/icons/search.png", "img/icons/add.png", "img/icons/heart.png", "img/icons/profile.png"};
-        String[] buttonTypes = {"home", "explore", "add", "notification", "profile"};
-
-        for (int i = 0; i < buttonIcons.length; i++) {
-            navigationPanel.add(createIconButton(buttonIcons[i], buttonTypes[i]));
-            if (i < buttonIcons.length - 1) {
-                navigationPanel.add(Box.createHorizontalGlue());
-            }
-        }
-
-        return navigationPanel;
-    }
-
-
     private void displayImage(String imagePath) {
         getContentPane().removeAll();
         setLayout(new BorderLayout());
 
         // Add the header and navigation panels back
         add(createHeaderPanel(), BorderLayout.NORTH);
-        add(createNavigationPanel(), BorderLayout.SOUTH);
+        add(Components.navigationPanel, BorderLayout.SOUTH);
 
         JPanel imageViewerPanel = new JPanel(new BorderLayout());
 
@@ -207,7 +182,7 @@ public class ExploreUI extends JFrame {
 
         // Re-add the header and navigation panels
         add(createHeaderPanel(), BorderLayout.NORTH);
-        add(createNavigationPanel(), BorderLayout.SOUTH);
+        add(Components.navigationPanel, BorderLayout.SOUTH);
 
         // Panel for the back button
         JPanel backButtonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
@@ -222,7 +197,7 @@ public class ExploreUI extends JFrame {
             getContentPane().removeAll();
             add(createHeaderPanel(), BorderLayout.NORTH);
             add(createMainContentPanel(), BorderLayout.CENTER);
-            add(createNavigationPanel(), BorderLayout.SOUTH);
+            add(Components.navigationPanel, BorderLayout.SOUTH);
             revalidate();
             repaint();
         });
@@ -249,42 +224,6 @@ public class ExploreUI extends JFrame {
         revalidate();
         repaint();
     }
-
-
-    private JButton createIconButton(String iconPath, String buttonType) {
-        ImageIcon iconOriginal = new ImageIcon(iconPath);
-        Image iconScaled = iconOriginal.getImage().getScaledInstance(NAV_ICON_SIZE, NAV_ICON_SIZE, Image.SCALE_SMOOTH);
-        JButton button = new JButton(new ImageIcon(iconScaled));
-        button.setBorder(BorderFactory.createEmptyBorder());
-        button.setContentAreaFilled(false);
-
-        switch (buttonType) {
-            case "home":
-                button.addActionListener(e -> generalWindowUI("home"));
-                break;
-            case "profile":
-                button.addActionListener(e -> generalWindowUI("profile"));
-                break;
-            case "notification":
-                button.addActionListener(e -> generalWindowUI("notification"));
-                break;
-            case "explore":
-                button.addActionListener(e -> generalWindowUI("explore"));
-                break;
-            case "add":
-                button.addActionListener(e -> generalWindowUI("image-upload"));
-                break;
-            default:
-                break;
-        }
-
-        return button;
-
-
-    }
-
-
-
 
 
 
