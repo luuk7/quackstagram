@@ -21,6 +21,7 @@ public class SignUpUI extends JFrame {
     private JButton btnUploadPhoto;
     private JButton btnSignIn;
 
+    
 
     public SignUpUI() {
         setTitle("Quackstagram - Register");
@@ -125,10 +126,7 @@ public class SignUpUI extends JFrame {
             dispose();
 
             // Open the SignInUI frame
-            SwingUtilities.invokeLater(() -> {
-                SignInUI signInFrame = new SignInUI();
-                signInFrame.setVisible(true);
-            });
+            FrameManager.openFrame("SIGN_IN");
         }
     }
 
@@ -177,14 +175,7 @@ public class SignUpUI extends JFrame {
     }
 
     private void openSignInUI() {
-        // Close the SignUpUI frame
-        dispose();
-
         // Open the SignInUI frame
-        SwingUtilities.invokeLater(() -> {
-            SignInUI signInFrame = new SignInUI();
-            signInFrame.setVisible(true);
-        });
+        FrameManager.openFrame("SIGN_IN");
     }
-
 }

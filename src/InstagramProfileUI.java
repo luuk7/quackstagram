@@ -11,16 +11,14 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 
-public class InstagramProfileUI extends JFrame implements FrameManager{
+public class InstagramProfileUI extends JFrame{
 
     private static final int WIDTH = 300;
     private static final int HEIGHT = 500;
     private static final int PROFILE_IMAGE_SIZE = 80; // Adjusted size for the profile image to match UI
     private static final int GRID_IMAGE_SIZE = WIDTH / 3; // Static size for grid images
-    private static final int NAV_ICON_SIZE = 20; // Corrected static size for bottom icons
     private JPanel contentPanel; // Panel to display the image grid or the clicked image
     private JPanel headerPanel;   // Panel for the header
-    private JPanel navigationPanel; // Panel for the navigation
     private User currentUser; // User object to store the current user's information
 
     public InstagramProfileUI(User user) {
@@ -100,8 +98,6 @@ public class InstagramProfileUI extends JFrame implements FrameManager{
         setLayout(new BorderLayout());
         contentPanel = new JPanel();
         headerPanel = createHeaderPanel();       // Initialize header panel
-        navigationPanel = createNavigationPanel(); // Initialize navigation panel
-
         initializeUI();
     }
 
@@ -115,7 +111,6 @@ public class InstagramProfileUI extends JFrame implements FrameManager{
         setLayout(new BorderLayout());
         contentPanel = new JPanel();
         headerPanel = createHeaderPanel();       // Initialize header panel
-        navigationPanel = createNavigationPanel(); // Initialize navigation panel
         initializeUI();
     }
 
@@ -124,7 +119,7 @@ public class InstagramProfileUI extends JFrame implements FrameManager{
 
         // Re-add the header and navigation panels
         add(headerPanel, BorderLayout.NORTH);
-        add(navigationPanel, BorderLayout.SOUTH);
+        add(Components.navigationPanel, BorderLayout.SOUTH);
 
         // Initialize the image grid
         initializeImageGrid();
@@ -181,9 +176,9 @@ public class InstagramProfileUI extends JFrame implements FrameManager{
         statsPanel.setBorder(BorderFactory.createEmptyBorder(25, 0, 10, 0)); // Add some vertical padding
 
 
-// Follow Button
-// Follow or Edit Profile Button
-// followButton.addActionListener(e -> handleFollowAction(currentUser.getUsername()));
+        // Follow Button
+        // Follow or Edit Profile Button
+        // followButton.addActionListener(e -> handleFollowAction(currentUser.getUsername()));
         JButton followButton;
         if (isCurrentUser) {
             followButton = new JButton("Edit Profile");
@@ -314,28 +309,6 @@ public class InstagramProfileUI extends JFrame implements FrameManager{
         }
     }
 
-
-    private JPanel createNavigationPanel() {
-        // Navigation Bar
-        JPanel navigationPanel = new JPanel();
-        navigationPanel.setBackground(new Color(249, 249, 249));
-        navigationPanel.setLayout(new BoxLayout(navigationPanel, BoxLayout.X_AXIS));
-        navigationPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-
-        navigationPanel.add(createIconButton("img/icons/home.png", "home"));
-        navigationPanel.add(Box.createHorizontalGlue());
-        navigationPanel.add(createIconButton("img/icons/search.png", "explore"));
-        navigationPanel.add(Box.createHorizontalGlue());
-        navigationPanel.add(createIconButton("img/icons/add.png", "add"));
-        navigationPanel.add(Box.createHorizontalGlue());
-        navigationPanel.add(createIconButton("img/icons/heart.png", "notification"));
-        navigationPanel.add(Box.createHorizontalGlue());
-        navigationPanel.add(createIconButton("img/icons/profile.png", "profile"));
-
-        return navigationPanel;
-
-    }
-
     private void initializeImageGrid() {
         contentPanel.removeAll(); // Clear existing content
         contentPanel.setLayout(new GridLayout(0, 3, 5, 5)); // Grid layout for image grid
@@ -396,57 +369,4 @@ public class InstagramProfileUI extends JFrame implements FrameManager{
         label.setForeground(Color.BLACK);
         return label;
     }
-
-    private JButton createIconButton(String iconPath, String buttonType) {
-        ImageIcon iconOriginal = new ImageIcon(iconPath);
-        Image iconScaled = iconOriginal.getImage().getScaledInstance(NAV_ICON_SIZE, NAV_ICON_SIZE, Image.SCALE_SMOOTH);
-        JButton button = new JButton(new ImageIcon(iconScaled));
-        button.setBorder(BorderFactory.createEmptyBorder());
-        button.setContentAreaFilled(false);
-
-        // Define actions based on button type
-        if ("home".equals(buttonType)) {
-            button.addActionListener(e -> openHomeUI());
-        } else if ("profile".equals(buttonType)) {
-            //
-        } else if ("notification".equals(buttonType)) {
-            button.addActionListener(e -> notificationsUI());
-        } else if ("explore".equals(buttonType)) {
-            button.addActionListener(e -> exploreUI());
-        } else if ("add".equals(buttonType)) {
-            button.addActionListener(e -> ImageUploadUI());
-        }
-        return button;
-
-
-    }
-
-    private void ImageUploadUI() {
-        // Open InstagramProfileUI frame
-
-        disposeAndCreate(this, new ImageUploadUI());
-    }
-
-    private void notificationsUI() {
-
-        disposeAndCreate(this, new NotificationsUI());
-    }
-
-    private void openHomeUI() {
-
-        disposeAndCreate(this, new QuakstagramHomeUI());
-    }
-
-    private void exploreUI() {
-
-        disposeAndCreate(this, new ExploreUI());
-    }
-
-    @Override
-    public void disposeAndCreate(JFrame oldFrame, JFrame newFrame) {
-        oldFrame.dispose();
-        newFrame.setVisible(true);
-    }
-
-
 }

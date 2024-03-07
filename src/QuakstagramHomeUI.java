@@ -20,10 +20,9 @@ import java.nio.file.StandardOpenOption;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class QuakstagramHomeUI extends JFrame implements FrameManager{
+public class QuakstagramHomeUI extends JFrame{
     private static final int WIDTH = 300;
     private static final int HEIGHT = 500;
-    private static final int NAV_ICON_SIZE = 20; // Corrected static size for bottom icons
     private static final int IMAGE_WIDTH = WIDTH - 100; // Width for the image posts
     private static final int IMAGE_HEIGHT = 150; // Height for the image posts
     private static final Color LIKE_BUTTON_COLOR = new Color(255, 90, 95); // Color for the like button
@@ -65,25 +64,8 @@ public class QuakstagramHomeUI extends JFrame implements FrameManager{
         
           add(headerPanel, BorderLayout.NORTH);
 
-
-        // Navigation Bar
-        JPanel navigationPanel = new JPanel();
-        navigationPanel.setBackground(new Color(249, 249, 249));
-        navigationPanel.setLayout(new BoxLayout(navigationPanel, BoxLayout.X_AXIS));
-        navigationPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-
-        navigationPanel.add(createIconButton("img/icons/home.png", "home"));
-        navigationPanel.add(Box.createHorizontalGlue());
-        navigationPanel.add(createIconButton("img/icons/search.png","explore"));
-        navigationPanel.add(Box.createHorizontalGlue());
-        navigationPanel.add(createIconButton("img/icons/add.png","add"));
-        navigationPanel.add(Box.createHorizontalGlue());
-        navigationPanel.add(createIconButton("img/icons/heart.png","notification"));
-        navigationPanel.add(Box.createHorizontalGlue());
-        navigationPanel.add(createIconButton("img/icons/profile.png", "profile"));
-
-
-        add(navigationPanel, BorderLayout.SOUTH);
+        // Navigation Panel
+        add(Components.navigationPanel, BorderLayout.SOUTH);
     }
 
     private void initializeUI() {
@@ -243,65 +225,56 @@ private void handleLikeAction(String imageId, JLabel likesLabel) {
 
 
     
-private String[][] createSampleData() {
-    String currentUser = "";
-    try (BufferedReader reader = Files.newBufferedReader(Paths.get("data", "users.txt"))) {
-        String line = reader.readLine();
-        if (line != null) {
-            currentUser = line.split(":")[0].trim();
-        }
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-
-    String followedUsers = "";
-    try (BufferedReader reader = Files.newBufferedReader(Paths.get("data", "following.txt"))) {
-        String line;
-        while ((line = reader.readLine()) != null) {
-            if (line.startsWith(currentUser + ":")) {
-                followedUsers = line.split(":")[1].trim();
-                break;
+    private String[][] createSampleData() {
+        String currentUser = "";
+        try (BufferedReader reader = Files.newBufferedReader(Paths.get("data", "users.txt"))) {
+            String line = reader.readLine();
+            if (line != null) {
+                currentUser = line.split(":")[0].trim();
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
 
-    // Temporary structure to hold the data
-    String[][] tempData = new String[100][]; // Assuming a maximum of 100 posts for simplicity
-    int count = 0;
-
-    try (BufferedReader reader = Files.newBufferedReader(Paths.get("img", "image_details.txt"))) {
-        String line;
-        while ((line = reader.readLine()) != null && count < tempData.length) {
-            String[] details = line.split(", ");
-            String imagePoster = details[1].split(": ")[1];
-            if (followedUsers.contains(imagePoster)) {
-                String imagePath = "img/uploaded/" + details[0].split(": ")[1] + ".png"; // Assuming PNG format
-                String description = details[2].split(": ")[1];
-                String likes = "Likes: " + details[4].split(": ")[1];
-
-                tempData[count++] = new String[]{imagePoster, description, likes, imagePath};
+        String followedUsers = "";
+        try (BufferedReader reader = Files.newBufferedReader(Paths.get("data", "following.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (line.startsWith(currentUser + ":")) {
+                    followedUsers = line.split(":")[1].trim();
+                    break;
+                }
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
 
-    // Transfer the data to the final array
-    String[][] sampleData = new String[count][];
-    System.arraycopy(tempData, 0, sampleData, 0, count);
+        // Temporary structure to hold the data
+        String[][] tempData = new String[100][]; // Assuming a maximum of 100 posts for simplicity
+        int count = 0;
 
-    return sampleData;
-}
+        try (BufferedReader reader = Files.newBufferedReader(Paths.get("img", "image_details.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null && count < tempData.length) {
+                String[] details = line.split(", ");
+                String imagePoster = details[1].split(": ")[1];
+                if (followedUsers.contains(imagePoster)) {
+                    String imagePath = "img/uploaded/" + details[0].split(": ")[1] + ".png"; // Assuming PNG format
+                    String description = details[2].split(": ")[1];
+                    String likes = "Likes: " + details[4].split(": ")[1];
 
-    private JButton createIconButton(String iconPath) {
-        ImageIcon iconOriginal = new ImageIcon(iconPath);
-        Image iconScaled = iconOriginal.getImage().getScaledInstance(NAV_ICON_SIZE, NAV_ICON_SIZE, Image.SCALE_SMOOTH);
-        JButton button = new JButton(new ImageIcon(iconScaled));
-        button.setBorder(BorderFactory.createEmptyBorder());
-        button.setContentAreaFilled(false);
-        return button;
+                    tempData[count++] = new String[]{imagePoster, description, likes, imagePath};
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Transfer the data to the final array
+        String[][] sampleData = new String[count][];
+        System.arraycopy(tempData, 0, sampleData, 0, count);
+
+        return sampleData;
     }
 
     private void displayImage(String[] postData) {
@@ -384,76 +357,4 @@ private String[][] createSampleData() {
         // Call displayImage with updated postData
         displayImage(postData);
     }
-
-    private JButton createIconButton(String iconPath, String buttonType) {
-        ImageIcon iconOriginal = new ImageIcon(iconPath);
-        Image iconScaled = iconOriginal.getImage().getScaledInstance(NAV_ICON_SIZE, NAV_ICON_SIZE, Image.SCALE_SMOOTH);
-        JButton button = new JButton(new ImageIcon(iconScaled));
-        button.setBorder(BorderFactory.createEmptyBorder());
-        button.setContentAreaFilled(false);
- 
-        // Define actions based on button type
-        if ("home".equals(buttonType)) {
-            button.addActionListener(e -> openHomeUI());
-        } else if ("profile".equals(buttonType)) {
-            button.addActionListener(e -> openProfileUI());
-        } else if ("notification".equals(buttonType)) {
-            button.addActionListener(e -> notificationsUI());
-        } else if ("explore".equals(buttonType)) {
-            button.addActionListener(e -> exploreUI());
-        } else if ("add".equals(buttonType)) {
-            button.addActionListener(e -> ImageUploadUI());
-        }
-        return button;
- 
-        
-    }
- 
-    private void openProfileUI() {
-        // Open InstagramProfileUI frame
-        this.dispose();
-        String loggedInUsername = "";
- 
-         // Read the logged-in user's username from users.txt
-     try (BufferedReader reader = Files.newBufferedReader(Paths.get("data", "users.txt"))) {
-         String line = reader.readLine();
-         if (line != null) {
-             loggedInUsername = line.split(":")[0].trim();
-         }
-     } catch (IOException e) {
-         e.printStackTrace();
-     }
-      User user = new User(loggedInUsername);
-        InstagramProfileUI profileUI = new InstagramProfileUI(user);
-        profileUI.setVisible(true);
-    }
-
-    private void ImageUploadUI() {
-        // Open InstagramProfileUI frame
-
-        disposeAndCreate(this, new ImageUploadUI());
-    }
-
-    private void notificationsUI() {
-
-        disposeAndCreate(this, new NotificationsUI());
-    }
-
-    private void openHomeUI() {
-
-        disposeAndCreate(this, new QuakstagramHomeUI());
-    }
-
-    private void exploreUI() {
-
-        disposeAndCreate(this, new ExploreUI());
-    }
-
-    @Override
-    public void disposeAndCreate(JFrame oldFrame, JFrame newFrame) {
-        oldFrame.dispose();
-        newFrame.setVisible(true);
-    }
-
-
 }

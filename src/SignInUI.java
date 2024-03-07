@@ -3,7 +3,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.*;
 
-
 public class SignInUI extends JFrame {
 
     private static final int WIDTH = 300;
@@ -23,13 +22,6 @@ public class SignInUI extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout(10, 10));
         initializeUI();
-    }
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            SignInUI frame = new SignInUI();
-            frame.setVisible(true);
-        });
     }
 
     private void initializeUI() {
@@ -114,28 +106,15 @@ public class SignInUI extends JFrame {
         System.out.println(enteredUsername + " <-> " + enteredPassword);
         if (verifyCredentials(enteredUsername, enteredPassword)) {
             System.out.println("It worked");
-            // Close the SignUpUI frame
-            dispose();
-
-            // Open the SignInUI frame
-            SwingUtilities.invokeLater(() -> {
-                InstagramProfileUI profileUI = new InstagramProfileUI(newUser);
-                profileUI.setVisible(true);
-            });
+            FrameManager.openFrame("PROFILE");
         } else {
-            System.out.println("It Didn't");
+            System.out.println("It Didn't work");
         }
     }
 
     private void onRegisterNowClicked(ActionEvent event) {
-        // Close the SignInUI frame
-        dispose();
-
-        // Open the SignUpUI frame
-        SwingUtilities.invokeLater(() -> {
-            SignUpUI signUpFrame = new SignUpUI();
-            signUpFrame.setVisible(true);
-        });
+        // Go to the SignUpUI frame
+        FrameManager.openFrame("SIGN_UP");
     }
 
     private boolean verifyCredentials(String username, String password) {
