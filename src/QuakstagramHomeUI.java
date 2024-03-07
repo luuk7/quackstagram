@@ -30,13 +30,9 @@ public class QuakstagramHomeUI extends JFrame{
     private JPanel cardPanel;
     private JPanel homePanel;
     private JPanel imageViewPanel;
-    
 
     public QuakstagramHomeUI() {
-        setTitle("Quakstagram Home");
-        setSize(WIDTH, HEIGHT);
-        setMinimumSize(new Dimension(WIDTH, HEIGHT));
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setTitle("Quackstagram Home");
         setLayout(new BorderLayout());
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);

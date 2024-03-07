@@ -1,3 +1,4 @@
+import java.awt.Dimension;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -6,7 +7,8 @@ import java.nio.file.Paths;
 import javax.swing.*;
 
 public class FrameManager{
-
+    public static final int FRAME_WIDTH = 300;
+    public static final int FRAME_HEIGHT = 500;
     public static JFrame currentFrame;
 
     public static void openFrame(String type){
@@ -14,6 +16,9 @@ public class FrameManager{
         if(currentFrame != null){
             currentFrame.dispose();
         }
+        newFrame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
+        newFrame.setMinimumSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
+        newFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         newFrame.setVisible(true);
         currentFrame = newFrame;
         System.out.println("Opened frame: " + type);

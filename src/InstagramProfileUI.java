@@ -22,6 +22,9 @@ public class InstagramProfileUI extends JFrame{
     private User currentUser; // User object to store the current user's information
 
     public InstagramProfileUI(User user) {
+        setTitle("DACS Profile");
+        setLayout(new BorderLayout());
+
         this.currentUser = user;
         // Initialize counts
         int imageCount = 0;
@@ -90,12 +93,6 @@ public class InstagramProfileUI extends JFrame{
         currentUser.setPostCount(imageCount);
 
         System.out.println(currentUser.getPostsCount());
-
-        setTitle("DACS Profile");
-        setSize(WIDTH, HEIGHT);
-        setMinimumSize(new Dimension(WIDTH, HEIGHT));
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLayout(new BorderLayout());
         contentPanel = new JPanel();
         headerPanel = createHeaderPanel();       // Initialize header panel
         initializeUI();
@@ -103,11 +100,7 @@ public class InstagramProfileUI extends JFrame{
 
 
     public InstagramProfileUI() {
-
         setTitle("DACS Profile");
-        setSize(WIDTH, HEIGHT);
-        setMinimumSize(new Dimension(WIDTH, HEIGHT));
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         contentPanel = new JPanel();
         headerPanel = createHeaderPanel();       // Initialize header panel

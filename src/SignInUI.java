@@ -4,22 +4,14 @@ import java.awt.event.ActionEvent;
 import java.io.*;
 
 public class SignInUI extends JFrame {
-
-    private static final int WIDTH = 300;
-    private static final int HEIGHT = 500;
-
     private JTextField txtUsername;
     private JTextField txtPassword;
     private JButton btnSignIn, btnRegisterNow;
     private JLabel lblPhoto;
     private User newUser;
 
-
     public SignInUI() {
         setTitle("Quackstagram - Register");
-        setSize(WIDTH, HEIGHT);
-        setMinimumSize(new Dimension(WIDTH, HEIGHT));
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout(10, 10));
         initializeUI();
     }

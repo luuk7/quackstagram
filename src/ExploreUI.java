@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -16,16 +15,10 @@ import java.time.temporal.ChronoUnit;
 import java.util.stream.Stream;
 
 public class ExploreUI extends JFrame {
-
-    private static final int WIDTH = 300;
-    private static final int HEIGHT = 500;
-    private static final int IMAGE_SIZE = WIDTH / 3; // Size for each image in the grid
+    private static final int IMAGE_SIZE = FrameManager.FRAME_WIDTH / 3; // Size for each image in the grid
 
     public ExploreUI() {
         setTitle("Explore");
-        setSize(WIDTH, HEIGHT);
-        setMinimumSize(new Dimension(WIDTH, HEIGHT));
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         initializeUI();
     }
@@ -174,7 +167,7 @@ public class ExploreUI extends JFrame {
         JButton backButton = new JButton("Back");
 
         // Make the button take up the full width
-        backButton.setPreferredSize(new Dimension(WIDTH - 20, backButton.getPreferredSize().height));
+        backButton.setPreferredSize(new Dimension(FrameManager.FRAME_WIDTH - 20, backButton.getPreferredSize().height));
 
         backButtonPanel.add(backButton);
 
@@ -209,46 +202,4 @@ public class ExploreUI extends JFrame {
         revalidate();
         repaint();
     }
-
-
-
-    private void generalWindowUI(String type) {
-        this.dispose();
-        switch (type) {
-            case "home":
-                QuakstagramHomeUI homeUI = new QuakstagramHomeUI();
-                homeUI.setVisible(true);
-                break;
-            case "image-upload":
-                ImageUploadUI upload = new ImageUploadUI();
-                upload.setVisible(true);
-                break;
-            case "notification":
-                NotificationsUI notificationsUI = new NotificationsUI();
-                notificationsUI.setVisible(true);
-                break;
-            case "explore":
-                ExploreUI explore = new ExploreUI();
-                explore.setVisible(true);
-                break;
-            case "profile":
-                String loggedInUsername = "";
-                // Read the logged-in user's username from users.txt
-                try (BufferedReader reader = Files.newBufferedReader(Paths.get("data", "users.txt"))) {
-                    String line = reader.readLine();
-                    if (line != null) {
-                        loggedInUsername = line.split(":")[0].trim();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                User user = new User(loggedInUsername);
-                InstagramProfileUI profileUI = new InstagramProfileUI(user);
-                profileUI.setVisible(true);
-                break;
-            default:
-                break;
-        }
-    }
-
 }

@@ -11,20 +11,14 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ImageUploadUI extends JFrame{
-
-    private static final int WIDTH = 300;
-    private static final int HEIGHT = 500;
     private JLabel imagePreviewLabel;
     private JTextArea bioTextArea;
     private JButton uploadButton;
     private JButton saveButton;
     private boolean imageUploaded = false;
 
-    public ImageUploadUI() {
+    public ImageUploadUI(){
         setTitle("Upload Image");
-        setSize(WIDTH, HEIGHT);
-        setMinimumSize(new Dimension(WIDTH, HEIGHT));
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         initializeUI();
     }
@@ -37,7 +31,7 @@ public class ImageUploadUI extends JFrame{
         // Image preview
         imagePreviewLabel = new JLabel();
         imagePreviewLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        imagePreviewLabel.setPreferredSize(new Dimension(WIDTH, HEIGHT / 3));
+        imagePreviewLabel.setPreferredSize(new Dimension(FrameManager.FRAME_WIDTH, FrameManager.FRAME_HEIGHT / 3));
 
         // Set an initial empty icon to the imagePreviewLabel
         ImageIcon emptyImageIcon = new ImageIcon();
@@ -51,7 +45,7 @@ public class ImageUploadUI extends JFrame{
         bioTextArea.setLineWrap(true);
         bioTextArea.setWrapStyleWord(true);
         JScrollPane bioScrollPane = new JScrollPane(bioTextArea);
-        bioScrollPane.setPreferredSize(new Dimension(WIDTH - 50, HEIGHT / 6));
+        bioScrollPane.setPreferredSize(new Dimension(FrameManager.FRAME_WIDTH - 50, FrameManager.FRAME_HEIGHT / 6));
         contentPanel.add(bioScrollPane);
 
         // Upload button

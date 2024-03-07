@@ -13,7 +13,7 @@ public class HeaderPanel {
     public static JPanel initializeHeaderPanel(String text){
         // Header with the Register label
         headerPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        headerPanel.setBackground(new Color(51, 51, 51)); // Set a darker background for the header
+        headerPanel.setBackground(new Color(51, 0, 51)); // Set a darker background for the header
         label = new JLabel(text);
         label.setFont(new Font("Arial", Font.BOLD, 16));
         label.setForeground(Color.WHITE); // Set the text color to white
