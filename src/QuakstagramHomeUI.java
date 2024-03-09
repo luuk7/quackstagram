@@ -10,22 +10,14 @@ import java.awt.event.ActionListener;
 
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class QuakstagramHomeUI extends JFrame{
-    private static final int WIDTH = 300;
-    private static final int HEIGHT = 500;
-    private static final int IMAGE_WIDTH = WIDTH - 100; // Width for the image posts
+    private static final int IMAGE_WIDTH = FrameManager.FRAME_WIDTH - 100; // Width for the image posts
     private static final int IMAGE_HEIGHT = 150; // Height for the image posts
-    private static final Color LIKE_BUTTON_COLOR = new Color(255, 90, 95); // Color for the like button
     private CardLayout cardLayout;
     private JPanel cardPanel;
     private JPanel homePanel;
@@ -53,35 +45,24 @@ public class QuakstagramHomeUI extends JFrame{
     }
 
     private void initializeUI() {
-       
-
         // Content Scroll Panel
         JPanel contentPanel = new JPanel();
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS)); // Vertical box layout
         JScrollPane scrollPane = new JScrollPane(contentPanel);
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER); // Never allow horizontal scrolling
-         String[][] sampleData = createSampleData(); 
+        String[][] sampleData = createSampleData(); 
         populateContentPanel(contentPanel, sampleData);
         add(scrollPane, BorderLayout.CENTER);
 
-
-        
-
-         // Set up the home panel
-
-         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
-        
-        
-      
-
-         homePanel.add(scrollPane, BorderLayout.CENTER);
-       
+        // Set up the home panel
+        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
+        homePanel.add(scrollPane, BorderLayout.CENTER);
 
     }
 
     private void populateContentPanel(JPanel panel, String[][] sampleData) {
 
-         for (String[] postData : sampleData) {
+        for (String[] postData : sampleData) {
             JPanel itemPanel = new JPanel();
             itemPanel.setLayout(new BoxLayout(itemPanel, BoxLayout.Y_AXIS));
             itemPanel.setBackground(Color.WHITE); // Set the background color for the item panel
@@ -95,7 +76,7 @@ public class QuakstagramHomeUI extends JFrame{
             imageLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
             imageLabel.setPreferredSize(new Dimension(IMAGE_WIDTH, IMAGE_HEIGHT));
             imageLabel.setBorder(BorderFactory.createLineBorder(Color.BLACK)); // Add border to image label
-            String imageId = new File(postData[3]).getName().split("\\.")[0];
+            String imageID = new File(postData[3]).getName().split("\\.")[0];
             try {
                 BufferedImage originalImage = ImageIO.read(new File(postData[3]));
                 BufferedImage croppedImage = originalImage.getSubimage(0, 0, Math.min(originalImage.getWidth(), IMAGE_WIDTH), Math.min(originalImage.getHeight(), IMAGE_HEIGHT));
@@ -109,104 +90,60 @@ public class QuakstagramHomeUI extends JFrame{
             JLabel descriptionLabel = new JLabel(postData[1]);
             descriptionLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-            JLabel likesLabel = new JLabel(postData[2]);
+            JLabel likesLabel = new JLabel();
             likesLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
-
-            JButton likeButton = new JButton("❤");
-            likeButton.setAlignmentX(Component.LEFT_ALIGNMENT);
-            likeButton.setBackground(LIKE_BUTTON_COLOR); // Set the background color for the like button
-            likeButton.setOpaque(true);
-            likeButton.setBorderPainted(false); // Remove border
-            likeButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    handleLikeAction(imageId, likesLabel);
-                }
-            });
+            likesLabel.setText(postData[2]); 
 
             itemPanel.add(nameLabel);
             itemPanel.add(imageLabel);
             itemPanel.add(descriptionLabel);
             itemPanel.add(likesLabel);
-            itemPanel.add(likeButton);
+            itemPanel.add(getLikeButton(imageID, likesLabel));
 
             panel.add(itemPanel);
 
-              // Make the image clickable
-              imageLabel.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                    displayImage(postData); // Call a method to switch to the image view
-                }
+                // Make the image clickable
+                imageLabel.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseClicked(MouseEvent e) {
+                        displayImage(postData); // Call a method to switch to the image view
+                    }
             });
         
 
             // Grey spacing panel
             JPanel spacingPanel = new JPanel();
-            spacingPanel.setPreferredSize(new Dimension(WIDTH-10, 5)); // Set the height for spacing
+            spacingPanel.setPreferredSize(new Dimension(FrameManager.FRAME_WIDTH-10, 5)); // Set the height for spacing
             spacingPanel.setBackground(new Color(230, 230, 230)); // Grey color for spacing
             panel.add(spacingPanel);
         }
     }
 
-private void handleLikeAction(String imageId, JLabel likesLabel) {
-    Path detailsPath = Paths.get("img", "image_details.txt");
-    StringBuilder newContent = new StringBuilder();
-    boolean updated = false;
-    String currentUser = "";
-    String imageOwner = "";
-    String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-
-    // Retrieve the current user from users.txt
-    try (BufferedReader userReader = Files.newBufferedReader(Paths.get("data", "users.txt"))) {
-        String line = userReader.readLine();
-        if (line != null) {
-            currentUser = line.split(":")[0].trim();
-        }
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
-
-    // Read and update image_details.txt
-    try (BufferedReader reader = Files.newBufferedReader(detailsPath)) {
-        String line;
-        while ((line = reader.readLine()) != null) {
-            if (line.contains("ImageID: " + imageId)) {
-                String[] parts = line.split(", ");
-                imageOwner = parts[1].split(": ")[1];
-                int likes = Integer.parseInt(parts[4].split(": ")[1]);
-                likes++; // Increment the likes count
-                parts[4] = "Likes: " + likes;
-                line = String.join(", ", parts);
-
-                // Update the UI
-                likesLabel.setText("Likes: " + likes);
-                updated = true;
+    private JButton getLikeButton(String imageID, JLabel likesLabel){
+        JButton likeButton = new JButton("🐤");
+        likeButton.setAlignmentX(Component.LEFT_ALIGNMENT);
+        likeButton.setBackground(Color.BLACK); // Set the background color for the like button
+        likeButton.setOpaque(true);
+        likeButton.setBorderPainted(false); // Remove border
+        likeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                handleLikeAction(imageID, likesLabel);
             }
-            newContent.append(line).append("\n");
-        }
-    } catch (IOException e) {
-        e.printStackTrace();
+        });
+        return likeButton;
     }
 
-    // Write updated likes back to image_details.txt
-    if (updated) {
-        try (BufferedWriter writer = Files.newBufferedWriter(detailsPath)) {
-            writer.write(newContent.toString());
+    private void handleLikeAction(String imageID, JLabel likesLabel) {
+        try {
+            ImageLikesManager.likeImage(User.getCurrentUser().getUsername(), imageID);
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        } 
 
-        // Record the like in notifications.txt
-        String notification = String.format("%s; %s; %s; %s\n", imageOwner, currentUser, imageId, timestamp);
-        try (BufferedWriter notificationWriter = Files.newBufferedWriter(Paths.get("data", "notifications.txt"), StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
-            notificationWriter.write(notification);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // Update the UI
+        likesLabel.setText("🐤 " + ImageLikesManager.getLikesCount(imageID));
     }
-}
-
 
     
     private String[][] createSampleData() {
@@ -245,8 +182,8 @@ private void handleLikeAction(String imageId, JLabel likesLabel) {
                 if (followedUsers.contains(imagePoster)) {
                     String imagePath = "img/uploaded/" + details[0].split(": ")[1] + ".png"; // Assuming PNG format
                     String description = details[2].split(": ")[1];
-                    String likes = "Likes: " + details[4].split(": ")[1];
-
+                    System.out.println(details[0].split(": ")[1]);
+                    String likes = "🐤 " + ImageLikesManager.getLikesCount(details[0].split(": ")[1]);
                     tempData[count++] = new String[]{imagePoster, description, likes, imagePath};
                 }
             }
@@ -263,21 +200,15 @@ private void handleLikeAction(String imageId, JLabel likesLabel) {
 
     private void displayImage(String[] postData) {
         imageViewPanel.removeAll(); // Clear previous content
-
-       
-        String imageId = new File(postData[3]).getName().split("\\.")[0];
+        String imageID = new File(postData[3]).getName().split("\\.")[0];
         JLabel likesLabel = new JLabel(postData[2]); // Update this line
-
-
 
         // Display the image
         JLabel fullSizeImageLabel = new JLabel();
         fullSizeImageLabel.setHorizontalAlignment(JLabel.CENTER);
-      
-
          try {
                 BufferedImage originalImage = ImageIO.read(new File(postData[3]));
-                BufferedImage croppedImage = originalImage.getSubimage(0, 0, Math.min(originalImage.getWidth(), WIDTH-20), Math.min(originalImage.getHeight(), HEIGHT-40));
+                BufferedImage croppedImage = originalImage.getSubimage(0, 0, Math.min(originalImage.getWidth(), FrameManager.FRAME_WIDTH-20), Math.min(originalImage.getHeight(), FrameManager.FRAME_HEIGHT-40));
                 ImageIcon imageIcon = new ImageIcon(croppedImage);
                 fullSizeImageLabel.setIcon(imageIcon);
             } catch (IOException ex) {
@@ -285,32 +216,19 @@ private void handleLikeAction(String imageId, JLabel likesLabel) {
                 fullSizeImageLabel.setText("Image not found");
             }
 
-        //User Info 
+        // User Info 
         JPanel userPanel = new JPanel();
         userPanel.setLayout(new BoxLayout(userPanel,BoxLayout.Y_AXIS));
         JLabel userName = new JLabel(postData[0]);
         userName.setFont(new Font("Arial", Font.BOLD, 18));
         userPanel.add(userName);//User Name
 
-           JButton likeButton = new JButton("❤");
-            likeButton.setAlignmentX(Component.LEFT_ALIGNMENT);
-            likeButton.setBackground(LIKE_BUTTON_COLOR); // Set the background color for the like button
-            likeButton.setOpaque(true);
-            likeButton.setBorderPainted(false); // Remove border
-            likeButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                   handleLikeAction(imageId, likesLabel); // Update this line
-                   refreshDisplayImage(postData, imageId); // Refresh the view
-                }
-            });
-       
         // Information panel at the bottom
         JPanel infoPanel = new JPanel();
         infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
         infoPanel.add(new JLabel(postData[1])); // Description
         infoPanel.add(new JLabel(postData[2])); // Likes
-        infoPanel.add(likeButton);
+        infoPanel.add(getLikeButton(imageID, likesLabel));
 
         imageViewPanel.add(fullSizeImageLabel, BorderLayout.CENTER);
         imageViewPanel.add(infoPanel, BorderLayout.SOUTH);
@@ -323,14 +241,14 @@ private void handleLikeAction(String imageId, JLabel likesLabel) {
         cardLayout.show(cardPanel, "ImageView"); // Switch to the image view
     }
 
-    private void refreshDisplayImage(String[] postData, String imageId) {
+    private void refreshDisplayImage(String[] postData, String imageID) {
         // Read updated likes count from image_details.txt
         try (BufferedReader reader = Files.newBufferedReader(Paths.get("img", "image_details.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                if (line.contains("ImageID: " + imageId)) {
+                if (line.contains("imageID: " + imageID)) {
                     String likes = line.split(", ")[4].split(": ")[1];
-                    postData[2] = "Likes: " + likes;
+                    postData[2] = "🐤 " + likes;
                     break;
                 }
             }

@@ -109,7 +109,7 @@ public class SignUpUI extends JFrame {
             dispose();
 
             // Open the SignInUI frame
-            FrameManager.openFrame("SIGN_IN");
+            FrameManager.openFrame("SIGN_IN", null);
         }
     }
 
@@ -159,6 +159,6 @@ public class SignUpUI extends JFrame {
 
     private void openSignInUI() {
         // Open the SignInUI frame
-        FrameManager.openFrame("SIGN_IN");
+        FrameManager.openFrame("SIGN_IN", null);
     }
 }

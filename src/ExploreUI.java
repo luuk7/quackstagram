@@ -90,26 +90,22 @@ public class ExploreUI extends JFrame {
         add(Components.getHeaderPanel("Image"), BorderLayout.NORTH);
         add(Components.getNavigationPanel(), BorderLayout.SOUTH);
 
-        JPanel imageViewerPanel = new JPanel(new BorderLayout());
-
         // Extract image ID from the imagePath
-        String imageId = new File(imagePath).getName().split("\\.")[0];
+        String imageID = new File(imagePath).getName().split("\\.")[0];
 
         // Read image details
         String username = "";
         String bio = "";
         String timestampString = "";
-        int likes = 0;
         Path detailsPath = Paths.get("img", "image_details.txt");
         try (Stream<String> lines = Files.lines(detailsPath)) {
-            String details = lines.filter(line -> line.contains("ImageID: " + imageId)).findFirst().orElse("");
+            String details = lines.filter(line -> line.contains("ImageID: " + imageID)).findFirst().orElse("");
             if (!details.isEmpty()) {
                 String[] parts = details.split(", ");
                 username = parts[1].split(": ")[1];
                 bio = parts[2].split(": ")[1];
                 System.out.println(bio + "this is where you get an error " + parts[3]);
                 timestampString = parts[3].split(": ")[1];
-                likes = Integer.parseInt(parts[4].split(": ")[1]);
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -149,7 +145,7 @@ public class ExploreUI extends JFrame {
         JPanel bottomPanel = new JPanel(new BorderLayout());
         JTextArea bioTextArea = new JTextArea(bio);
         bioTextArea.setEditable(false);
-        JLabel likesLabel = new JLabel("Likes: " + likes);
+        JLabel likesLabel = new JLabel("🐤 " + ImageLikesManager.getLikesCount(imageID));
         bottomPanel.add(bioTextArea, BorderLayout.CENTER);
         bottomPanel.add(likesLabel, BorderLayout.SOUTH);
 
@@ -183,6 +179,7 @@ public class ExploreUI extends JFrame {
 
         usernameLabel.addActionListener(e -> {
             User user = new User(finalUsername); // Assuming User class has a constructor that takes a username
+            FrameManager.openFrame("PROFILE", user);
             InstagramProfileUI profileUI = new InstagramProfileUI(user);
             profileUI.setVisible(true);
             dispose(); // Close the current frame

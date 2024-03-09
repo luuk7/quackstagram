@@ -11,8 +11,8 @@ public class FrameManager{
     public static final int FRAME_HEIGHT = 500;
     public static JFrame currentFrame;
 
-    public static void openFrame(String type){
-        JFrame newFrame = getFrame(type);
+    public static void openFrame(String type, User user){
+        JFrame newFrame = getFrame(type, user);
         if(currentFrame != null){
             currentFrame.dispose();
         }
@@ -24,24 +24,13 @@ public class FrameManager{
         System.out.println("Opened frame: " + type);
     }
 
-    public static JFrame getFrame(String type){
+    public static JFrame getFrame(String type, User user){
         switch (type) {
             case "SIGN_IN":
                 return new SignInUI();
             case "SIGN_UP":
                 return new SignUpUI();
             case "PROFILE":
-                String loggedInUsername = "";
-                // Read the logged-in user's username from users.txt
-                try (BufferedReader reader = Files.newBufferedReader(Paths.get("data", "users.txt"))) {
-                    String line = reader.readLine();
-                    if (line != null) {
-                        loggedInUsername = line.split(":")[0].trim();
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                User user = new User(loggedInUsername);
                 return new InstagramProfileUI(user);
             case "IMAGE_UPLOAD":
                 return new ImageUploadUI();

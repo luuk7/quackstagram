@@ -89,7 +89,7 @@ public class SignInUI extends JFrame {
         System.out.println(enteredUsername + " <-> " + enteredPassword);
         if (verifyCredentials(enteredUsername, enteredPassword)) {
             System.out.println("It worked");
-            FrameManager.openFrame("PROFILE");
+            FrameManager.openFrame("PROFILE", User.getCurrentUser());
         } else {
             System.out.println("It Didn't work");
         }
@@ -97,7 +97,7 @@ public class SignInUI extends JFrame {
 
     private void onRegisterNowClicked(ActionEvent event) {
         // Go to the SignUpUI frame
-        FrameManager.openFrame("SIGN_UP");
+        FrameManager.openFrame("SIGN_UP", null);
     }
 
     private boolean verifyCredentials(String username, String password) {

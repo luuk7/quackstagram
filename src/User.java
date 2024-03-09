@@ -1,3 +1,7 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +14,7 @@ class User {
     private int followersCount;
     private int followingCount;
     private List<Picture> pictures;
+    private static User currentUser;
 
     public User(String username, String bio, String password) {
         this.username = username;
@@ -24,6 +29,22 @@ class User {
 
     public User(String username) {
         this.username = username;
+    }
+
+    public static User getCurrentUser(){
+        // Open InstagramProfileUI frame
+        String loggedInUsername = "";
+        // Read the logged-in user's username from users.txt
+        try (BufferedReader reader = Files.newBufferedReader(Paths.get("data", "users.txt"))) {
+            String line = reader.readLine();
+            if (line != null) {
+                loggedInUsername = line.split(":")[0].trim();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        User user = new User(loggedInUsername);
+        return user;
     }
 
     // Add a picture to the user's profile

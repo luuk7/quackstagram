@@ -1,4 +1,9 @@
 import java.awt.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 import javax.swing.*;
 
 public class NavigationPanel {
@@ -52,24 +57,24 @@ public class NavigationPanel {
     }
 
     private static void openProfileUI() {
-        // Open InstagramProfileUI frame
-        FrameManager.openFrame("PROFILE");
+        
+        FrameManager.openFrame("PROFILE", User.getCurrentUser());
     }
 
     private static void ImageUploadUI() {
         // Open InstagramProfileUI frame
-        FrameManager.openFrame("IMAGE_UPLOAD");
+        FrameManager.openFrame("IMAGE_UPLOAD", null);
     }
 
     private static void notificationsUI() {
-        FrameManager.openFrame("NOTIFICATIONS");
+        FrameManager.openFrame("NOTIFICATIONS", null);
     }
 
     private static void openHomeUI() {
-        FrameManager.openFrame("HOME");
+        FrameManager.openFrame("HOME", null);
     }
 
     private static void exploreUI() {
-        FrameManager.openFrame("EXPLORE");
+        FrameManager.openFrame("EXPLORE", null);
     }
 }
