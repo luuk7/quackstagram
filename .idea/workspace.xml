@@ -8,12 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c165c8b-9bb0-4f72-adbc-445918410f94" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/FrameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageUploadUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageUploadUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/InstagramProfileUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/InstagramProfileUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NotificationsUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NotificationsUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/QuakstagramHomeUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/QuakstagramHomeUI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +45,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;temp&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-21&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Dimitris T/Desktop/Projects/quackstagram/src&quot;,
     &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Dimitris T/Desktop/Projects/quackstagram/SignInUI.java&quot;,
