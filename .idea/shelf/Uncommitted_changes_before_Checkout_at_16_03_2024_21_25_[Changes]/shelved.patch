@@ -1,0 +1,17 @@
+Index: src/Server.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.io.*;\r\nimport java.net.ServerSocket;\r\nimport java.net.Socket;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class Server {\r\n    public static ServerSocket server;\r\n    public static List<ClientHandler> UserList = new ArrayList<ClientHandler>();\r\n    public static void createServer() throws IOException {\r\n        try {\r\n            server = new ServerSocket(8080);\r\n        } catch (IOException e) {\r\n            throw new RuntimeException(e);\r\n        }\r\n        System.out.println(\"Started, waiting for clients...\");\r\n        while (true){\r\n            Socket clientSocket = server.accept();\r\n            System.out.println(\"Client found\");\r\n            ClientHandler clientHandler = new ClientHandler(clientSocket);\r\n            Thread clientHandlerThread = new Thread(clientHandler); // Create a new thread for the client handler\r\n            clientHandlerThread.start(); // Start the thread\r\n            UserList.add(clientHandler); // Add the client handler to the user list\r\n        }\r\n    }\r\n\r\n\r\n    public static void SaveToChat(Text textObject, String message) throws IOException {\r\n\r\n\r\n        File file = null;\r\n        if (textObject.getSenderName().compareTo(textObject.getReceiverName())<0){file = new File(textObject.getSenderName()+textObject.getReceiverName());}\r\n        else if (textObject.getSenderName().compareTo(textObject.getReceiverName())>0) { file = new File(textObject.getReceiverName()+textObject.getSenderName());}\r\n        else {System.out.println(\"Error. Try again.\");return;}\r\n        FileWriter writer = new FileWriter(file, true);\r\n        writer.write(textObject.getDatetime() + \" \" + textObject.getSenderName() + \": \" + message + \"\\n\");\r\n        writer.close();\r\n    }\r\n}\r\n
+===================================================================
+diff --git a/src/Server.java b/src/Server.java
+--- a/src/Server.java	
++++ b/src/Server.java	
+@@ -26,8 +26,6 @@
+ 
+ 
+     public static void SaveToChat(Text textObject, String message) throws IOException {
+-
+-
+         File file = null;
+         if (textObject.getSenderName().compareTo(textObject.getReceiverName())<0){file = new File(textObject.getSenderName()+textObject.getReceiverName());}
+         else if (textObject.getSenderName().compareTo(textObject.getReceiverName())>0) { file = new File(textObject.getReceiverName()+textObject.getSenderName());}

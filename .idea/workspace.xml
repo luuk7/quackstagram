@@ -8,8 +8,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c165c8b-9bb0-4f72-adbc-445918410f94" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ChatUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ClientHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Text.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/following.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/following.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/quackstagram/ExploreUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/ExploreUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/quackstagram/ExploreUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/ExploreUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/quackstagram/ImageLikesManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/ImageLikesManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/quackstagram/ImageUploadUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/ImageUploadUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/quackstagram/InstagramProfileUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/InstagramProfileUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/quackstagram/InstagramProfileUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/InstagramProfileUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/quackstagram/NotificationsUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/NotificationsUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/quackstagram/Picture.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/Picture.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/quackstagram/QuakstagramHomeUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/QuakstagramHomeUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/quackstagram/QuakstagramHomeUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/QuakstagramHomeUI$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/quackstagram/QuakstagramHomeUI$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/quackstagram/QuakstagramHomeUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/QuakstagramHomeUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/quackstagram/SignInUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/SignInUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/quackstagram/SignUpUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/SignUpUI$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/quackstagram/SignUpUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/SignUpUI$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/quackstagram/SignUpUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/SignUpUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/quackstagram/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FrameManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FrameManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NavigationPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/NavigationPanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,10 +44,16 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="temp" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -40,31 +70,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-21&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dimitris T/Desktop/Projects/quackstagram/src&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Dimitris T/Desktop/Projects/quackstagram/SignInUI.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "extract.method.default.visibility": "private",
+    "git-widget-placeholder": "main",
+    "jdk.selected.JAVA_MODULE": "openjdk-21",
+    "last_opened_file_path": "C:/Users/Dimitris T/Desktop/Projects/quackstagram/src",
+    "onboarding.tips.debug.path": "C:/Users/Dimitris T/Desktop/Projects/quackstagram/SignInUI.java",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "run.code.analysis.last.selected.profile": "pProject Default"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Dimitris T\Desktop\Projects\quackstagram\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Dimitris T\Desktop\Projects\quackstagram\src" />
       <recent name="C:\Users\Dimitris T\Desktop\Projects\quackstagram" />
+      <recent name="C:\Users\Dimitris T\Desktop\Projects\quackstagram\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.quackstagram.SignInUI">
+  <component name="RunManager" selected="Application.App">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="App" />
+      <module name="quackstagram" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="App2" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="App" />
+      <module name="quackstagram" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SignInUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="$USER_HOME$/.jdks/openjdk-21.0.1" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -88,8 +132,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.App2" />
+      <item itemvalue="Application.App" />
+      <item itemvalue="Application.quackstagram.SignInUI" />
+      <item itemvalue="Application.SignInUI" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.App" />
         <item itemvalue="Application.quackstagram.SignInUI" />
         <item itemvalue="Application.SignInUI" />
       </list>
@@ -111,8 +162,28 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/SignInUI.java</url>
-          <line>110</line>
+          <line>85</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ChatUI.java</url>
+          <line>179</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ChatUI.java</url>
+          <line>156</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ChatUI.java</url>
+          <line>155</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ChatUI.java</url>
+          <line>154</line>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

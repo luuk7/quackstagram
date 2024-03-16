@@ -40,6 +40,8 @@ public class FrameManager{
                 return new ExploreUI();
             case "HOME":
                 return new QuakstagramHomeUI();
+            case "CHAT":
+                return new ChatUI();
             default:
                 System.out.println("Invalid frame type");
                 return null;

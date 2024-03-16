@@ -31,6 +31,8 @@ public class NavigationPanel {
         navigationPanel.add(createIconButton("img/icons/heart.png","notification"));
         navigationPanel.add(Box.createHorizontalGlue());
         navigationPanel.add(createIconButton("img/icons/profile.png", "profile"));
+        navigationPanel.add(createIconButton("img/icons/chat.png", "chat"));
+        navigationPanel.add(Box.createHorizontalGlue());
         return navigationPanel;
     }
 
@@ -52,6 +54,8 @@ public class NavigationPanel {
             button.addActionListener(e -> exploreUI());
         } else if ("add".equals(buttonType)) {
             button.addActionListener(e -> ImageUploadUI());
+        } else if ("chat".equals(buttonType)){
+            button.addActionListener(e -> chatUI());
         }
         return button;
     }
@@ -77,4 +81,5 @@ public class NavigationPanel {
     private static void exploreUI() {
         FrameManager.openFrame("EXPLORE", null);
     }
+    private static void chatUI(){FrameManager.openFrame("CHAT",null);}
 }
