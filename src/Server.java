@@ -3,37 +3,44 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
+
 
 public class Server {
-    public static ServerSocket server;
-    public static List<ClientHandler> UserList = new ArrayList<ClientHandler>();
-    public static void createServer(String name) throws IOException {
-        try {
-            server = new ServerSocket(8080);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+
+    public static boolean serverExists = false;
+
+    // Using Vector for thread-safe access
+    public volatile static List<ClientHandler> UserList = new ArrayList<>();
+
+    public static void main(String[] args) throws IOException {
+        ServerSocket server = new ServerSocket(8080);
         System.out.println("Started, waiting for clients...");
+        serverExists = true;
+
+        synchronized (UserList){
         while (true) {
-            Socket clientSocket = server.accept();
-            System.out.println("Client found");
-            // Check if a client with the same name already exists
-            boolean clientExists = false;
-            for (ClientHandler client : UserList) {
-                if (client.getName().equals(name)) {
-                    clientExists = true;
-                    System.out.println("Client with the same name already exists. Ignoring the new client.");
-                    break;
+            try {
+                Socket clientSocket = server.accept();
+                System.out.println("Client connected: " + clientSocket.getInetAddress().getHostAddress());
+
+                // Create a ClientHandler for the connected client
+                ClientHandler handler = new ClientHandler(clientSocket);
+                Thread clientHandlerThread = new Thread(handler);
+                clientHandlerThread.start();
+
+                // Add the ClientHandler to UserList
+                synchronized (UserList) {
+                    UserList.add(handler);
                 }
-            }
-            if (!clientExists) {
-                Thread clientHandler = new Thread(new ClientHandler(clientSocket, name));
-                clientHandler.start();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                // Handle exceptions, possibly close server or log the error
             }
         }
     }
-
-
+    }
 
 
     public static void SaveToChat(Text textObject, String message) throws IOException {
@@ -47,4 +54,17 @@ public class Server {
         writer.write(textObject.getDatetime() + " " + textObject.getSenderName() + ": " + message + "\n");
         writer.close();
     }
+
+    public static synchronized ClientHandler getClientFromName(String name) {
+        // Synchronize access to UserList when searching for a client
+        System.out.println(UserList.size());
+        for (ClientHandler client : UserList) {
+            if (client.getName().equals(name)) {
+                return client;
+            }
+        }
+        System.out.println("Client could not be found");
+        return null;
+    }
+
 }

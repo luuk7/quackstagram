@@ -4,17 +4,13 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class Client{
-    Socket clientSocket;
 
-    BufferedReader reader;
-    PrintWriter writer;
     static boolean active = true;
-    private String name;
-    private Socket socket;
 
 
-    public static void createClient(String name) throws IOException {
+    public static void createClient() throws IOException {
         Socket clientSocket = new Socket("127.0.0.1", 8080);
+//        Client client = new Client(clientSocket);
         BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream())); // read from server
         PrintWriter writer = new PrintWriter(clientSocket.getOutputStream(),true); //write to server
         Thread sendMessage = new Thread( ()-> {
@@ -57,7 +53,4 @@ public class Client{
         receiveMessage.start();
     }
 
-    public String getName() {
-        return name;
-    }
 }

@@ -65,16 +65,18 @@ public class Text {
     }
 
     public ClientHandler CheckIfOnline(String name){
-        for (ClientHandler client: Server.UserList){
-            if (client.getName().equals(name)){
-                return client;
+        synchronized (Server.UserList) {
+            for (ClientHandler client : Server.UserList) {
+                if (client.getName().equals(name)) {
+                    return client;
+                }
             }
+            return null;
         }
-        return null;
     }
 
 
-    public static void sendMessage(Text textObject) throws IOException {
+    public void sendMessage(Text textObject) throws IOException {
         String msg = textObject.getText();
         String msgPruned = msg.replace("@"+textObject.getReceiverName() , "");
         textObject.getReceiverClient().getWriter().println(textObject.getSenderName() + ": " + msgPruned);
