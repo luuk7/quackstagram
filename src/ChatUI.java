@@ -123,6 +123,7 @@ public class ChatUI extends JFrame {
 
         // Add content panel to the frame
         add(contentPanel, BorderLayout.CENTER);
+        add(Components.getNavigationPanel(), BorderLayout.SOUTH);
     }
 
     private void initializeClient() {
@@ -154,6 +155,8 @@ public class ChatUI extends JFrame {
     private void sendMessage(String message, JTextArea messageTextArea) {
         ClientHandler userClient = findClient(username);
         ClientHandler receiverClient = findClient(recipientUsername);
+        System.out.println(userClient);
+        System.out.println(receiverClient);
         if (userClient == null || receiverClient == null) {
             System.out.println("Client not found.");
             return;
