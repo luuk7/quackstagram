@@ -31,8 +31,8 @@ public class NavigationPanel {
         navigationPanel.add(createIconButton("img/icons/heart.png","notification"));
         navigationPanel.add(Box.createHorizontalGlue());
         navigationPanel.add(createIconButton("img/icons/profile.png", "profile"));
-        navigationPanel.add(createIconButton("img/icons/chat.png", "chat"));
         navigationPanel.add(Box.createHorizontalGlue());
+        navigationPanel.add(createIconButton("img/icons/chat.png", "chat"));
         return navigationPanel;
     }
 
@@ -81,5 +81,7 @@ public class NavigationPanel {
     private static void exploreUI() {
         FrameManager.openFrame("EXPLORE", null);
     }
-    private static void chatUI(){FrameManager.openFrame("CHAT",null);}
+    private static void chatUI(){
+        FrameManager.openFrame("CHAT",null);
+    }
 }

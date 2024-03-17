@@ -128,14 +128,59 @@ public class ChatUI extends JFrame {
 
         // Add content panel to the frame
         add(contentPanel, BorderLayout.CENTER);
+        add(Components.getNavigationPanel(), BorderLayout.SOUTH);
     }
 
 
+<<<<<<< HEAD
     public void sendMessage(String message) throws IOException {
         ClientHandler sender = Server.getClientFromName(username);
         ClientHandler receiver = Server.getClientFromName(recipientUsername);
         Text text = new Text(username,recipientUsername, message, sender,receiver);
         text.sendMessage(text);
+=======
+                Client.createClient(username);
+                ClientHandler clientHandler = new ClientHandler(client.clientSocket, username);
+                Server.UserList.add(clientHandler);
+
+            } catch (IOException e) {
+                // If connection failed, attempt to start the server locally
+                try {
+                    Server.createServer(username);
+                    // Wait a bit for the server to start before attempting to connect again
+                    Thread.sleep(1000);
+                    client = new Client();
+                    Client.createClient(username);
+
+                } catch (IOException | InterruptedException ex) {
+                    // Handle exceptions
+                    ex.printStackTrace();
+                }
+            }
+        });
+        clientInitThread.start();
+    }
+
+    private void sendMessage(String message, JTextArea messageTextArea) {
+        ClientHandler userClient = findClient(username);
+        ClientHandler receiverClient = findClient(recipientUsername);
+        System.out.println(userClient);
+        System.out.println(receiverClient);
+        if (userClient == null || receiverClient == null) {
+            System.out.println("Client not found.");
+            return;
+        }
+
+        try {
+            Text text = new Text(username, recipientUsername, message, userClient, receiverClient);
+            Text.sendMessage(text);
+            // Assuming you want to display the sent message in the messageTextArea
+            messageTextArea.append(username + ": " + message + "\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Failed to send message.");
+        }
+>>>>>>> ba05ee56108eaa14e32db50fed23794936b19eb5
     }
 
 

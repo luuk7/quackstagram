@@ -20,9 +20,9 @@
       <change beforePath="$PROJECT_DIR$/production/quackstagram/ChatUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/ChatUI$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/production/quackstagram/ChatUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/ChatUI.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/production/quackstagram/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/Client.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/quackstagram/ClientHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/quackstagram/ClientHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/ClientHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/production/quackstagram/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/quackstagram/Text.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/quackstagram/Text.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/Text.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ChatUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientHandler.java" afterDir="false" />
