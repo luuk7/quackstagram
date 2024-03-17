@@ -8,23 +8,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c165c8b-9bb0-4f72-adbc-445918410f94" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_03_2024_21_25__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_03_2024_21_25__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_03_2024_21_25__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_03_2024_21_25__Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chats/LorinXylo" beforeDir="false" afterPath="$PROJECT_DIR$/chats/LorinXylo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/credentials.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/credentials.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/following.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/following.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/users.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/users.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/quackstagram/ChatUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/ChatUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/quackstagram/ChatUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/ChatUI$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/production/quackstagram/ChatUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/ChatUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/quackstagram/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/Client.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/production/quackstagram/ClientHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/ClientHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/quackstagram/NavigationPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/NavigationPanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/production/quackstagram/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/Server.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/production/quackstagram/Text.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/Text.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ChatUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ClientHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Text.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Text.java" afterDir="false" />
@@ -88,7 +79,7 @@
       <recent name="C:\Users\Dimitris T\Desktop\Projects\quackstagram\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App2">
+  <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="quackstagram" />
@@ -167,31 +158,6 @@
           <url>file://$PROJECT_DIR$/src/SignInUI.java</url>
           <line>85</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ChatUI.java</url>
-          <line>134</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ChatUI.java</url>
-          <line>136</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ChatUI.java</url>
-          <line>135</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ChatUI.java</url>
-          <line>137</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Text.java</url>
-          <line>81</line>
-          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

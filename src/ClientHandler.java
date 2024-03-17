@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.io.*;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class ClientHandler implements Runnable{
@@ -33,9 +35,11 @@ public class ClientHandler implements Runnable{
 
             String name = JOptionPane.showInputDialog("What do you want to be known as?");
             JOptionPane.showMessageDialog(null,"You will be known as: " + name);
-            for (ClientHandler client : Server.UserList) {
-                if (client.getName() == null) {
-                    client.name = name;
+            synchronized (Server.UserList) {
+                for (ClientHandler client : Server.UserList) {
+                    if (client.getName() == null) {
+                        client.name = name;
+                    }
                 }
             }
 
@@ -73,6 +77,11 @@ public class ClientHandler implements Runnable{
     public String getName() {
         return name;
     }
+    public void setWriter(PrintWriter writer){
+        this.writer = writer;
+    }
+    public void setReader(BufferedReader reader){this.reader = reader;}
+    public void getScanner(Scanner scanner){this.scanner = scanner;}
     public String toString(){
         return "Name:" + this.getName() + "Writer: " + this.getWriter() + "Reader:" + this.getReader() + "Socket:" + this.socket;
     }

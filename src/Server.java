@@ -3,22 +3,19 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
-
 
 public class Server {
 
     public static boolean serverExists = false;
 
-    // Using Vector for thread-safe access
-    public volatile static List<ClientHandler> UserList = new ArrayList<>();
+    // Using ArrayList for simplicity, with synchronized access
+    public static List<ClientHandler> UserList = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
         ServerSocket server = new ServerSocket(8080);
         System.out.println("Started, waiting for clients...");
         serverExists = true;
 
-        synchronized (UserList){
         while (true) {
             try {
                 Socket clientSocket = server.accept();
@@ -32,6 +29,7 @@ public class Server {
                 // Add the ClientHandler to UserList
                 synchronized (UserList) {
                     UserList.add(handler);
+                    printUserList();
                 }
 
             } catch (IOException e) {
@@ -40,7 +38,7 @@ public class Server {
             }
         }
     }
-    }
+
 
 
     public static void SaveToChat(Text textObject, String message) throws IOException {
@@ -54,17 +52,14 @@ public class Server {
         writer.write(textObject.getDatetime() + " " + textObject.getSenderName() + ": " + message + "\n");
         writer.close();
     }
-
-    public static synchronized ClientHandler getClientFromName(String name) {
-        // Synchronize access to UserList when searching for a client
-        System.out.println(UserList.size());
-        for (ClientHandler client : UserList) {
-            if (client.getName().equals(name)) {
-                return client;
+    public static void printUserList(){
+        synchronized (UserList) {
+            for (ClientHandler client : UserList) {
+                System.out.println(client.toString());
             }
         }
-        System.out.println("Client could not be found");
-        return null;
     }
+
+
 
 }

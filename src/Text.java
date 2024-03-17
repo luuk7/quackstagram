@@ -1,7 +1,5 @@
 import javax.swing.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -66,21 +64,24 @@ public class Text {
 
     public ClientHandler CheckIfOnline(String name){
         synchronized (Server.UserList) {
-            for (ClientHandler client : Server.UserList) {
-                if (client.getName().equals(name)) {
-                    return client;
-                }
-            }
-            return null;
+         for (ClientHandler client : Server.UserList) {
+              if (client.getName().equals(name)) {
+                 return client;
+             }
+           }
         }
+        return null;
+
     }
 
 
     public void sendMessage(Text textObject) throws IOException {
-        String msg = textObject.getText();
-        String msgPruned = msg.replace("@"+textObject.getReceiverName() , "");
-        textObject.getReceiverClient().getWriter().println(textObject.getSenderName() + ": " + msgPruned);
-        Server.SaveToChat(textObject, msgPruned);
+        synchronized (Server.UserList) {
+            String msg = textObject.getText();
+            String msgPruned = msg.replace("@" + textObject.getReceiverName(), "");
+            textObject.getReceiverClient().getWriter().println(textObject.getSenderName() + ": " + msgPruned);
+            Server.SaveToChat(textObject, msgPruned);
+        }
     }
 
     public String getReceiverName() {
