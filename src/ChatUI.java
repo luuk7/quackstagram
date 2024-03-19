@@ -1,10 +1,13 @@
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.*;
+import java.util.ArrayList;
 
 public class ChatUI extends JFrame {
 
@@ -14,6 +17,9 @@ public class ChatUI extends JFrame {
     static String path;
     static Client client;
     JTextArea fileContentTextArea; // Declare fileContentTextArea as a class-level variable
+    JTextArea messageTextArea; 
+    ArrayList<JLabel> followerLabels = new ArrayList<>();
+
 
     public ChatUI() {
         setTitle("ChatRoom");
@@ -40,7 +46,7 @@ public class ChatUI extends JFrame {
         JPanel namesPanel = new JPanel();
         namesPanel.setLayout(new BoxLayout(namesPanel, BoxLayout.Y_AXIS));
 
-        JTextArea messageTextArea = new JTextArea();
+        messageTextArea = new JTextArea();
         messageTextArea.setEditable(false); // Set the text area to be read-only
 
         // Read following.txt and extract names of people following the current user
@@ -53,31 +59,16 @@ public class ChatUI extends JFrame {
                     String[] followers = parts[1].trim().split(";");
                     for (String follower : followers) {
                         JLabel followerLabel = new JLabel(follower.trim());
+                        followerLabel.setBorder(new EmptyBorder(20, 20, 20, 20));
+
+                        followerLabel.setOpaque(true);
+                        followerLabels.add(followerLabel);
                         followerLabel.addMouseListener(new MouseAdapter() {
                             @Override
                             public void mouseClicked(MouseEvent e) {
                                 // Handle click event
                                 String clickedName = followerLabel.getText();
-                                System.out.println("Clicked: " + clickedName);
-                                recipientUsername = clickedName;
-                                if (username.compareTo(recipientUsername) < 0) {
-                                    path = "chats/" + username + recipientUsername;
-                                } else if (username.compareTo(recipientUsername) > 0) {
-                                    path = "chats/" + recipientUsername + username;
-                                } else {
-                                    System.out.println("Error. Try again.");
-                                    return;
-                                }
-                                file = new File(path);
-                                if (!file.exists()) {
-                                    try {
-                                        file.createNewFile();
-                                    } catch (IOException exception) {
-                                        exception.printStackTrace();
-                                    }
-                                }
-                                // Here you can perform actions when a name is clicked
-                                readFile(path, messageTextArea);
+                                setReceipant(clickedName, followerLabel);
                             }
                         });
                         namesPanel.add(followerLabel);
@@ -88,55 +79,94 @@ public class ChatUI extends JFrame {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        JPanel inputPanel = new JPanel();
-        inputPanel.setLayout(new BorderLayout());
-        JTextField inputField = new JTextField();
-        JButton sendButton = new JButton("Send");
-        sendButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String message = inputField.getText();
-                try {
+        if(followerLabels.size() > 0){
+            setReceipant(followerLabels.get(0).getText(), followerLabels.get(0));
+            JPanel inputPanel = new JPanel();
+            inputPanel.setLayout(new BorderLayout());
+            JTextField inputField = new JTextField();
+            JButton sendButton = new JButton("Send");
+            sendButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String message = inputField.getText();
+                    if(message.isEmpty()){
+                        return;
+                    }
                     sendMessage(message);
-                } catch (IOException ex) {
-                    throw new RuntimeException(ex);
+                    inputField.setText(""); // Clear the input field after sending message
                 }
-                inputField.setText(""); // Clear the input field after sending message
-            }
-        });
-        inputPanel.add(inputField,BorderLayout.CENTER);
-        inputPanel.add(sendButton, BorderLayout.EAST);
+            });
+            inputPanel.add(inputField,BorderLayout.CENTER);
+            inputPanel.add(sendButton, BorderLayout.EAST);
 
 
-        // Right panel to display text messages and input text box
-        JPanel rightPanel = new JPanel();
-        rightPanel.setLayout(new BorderLayout());
 
-        // Text area to display messages
+            // Right panel to display text messages and input text box
+            JPanel rightPanel = new JPanel();
+            rightPanel.setLayout(new BorderLayout());
 
-        JScrollPane messageScrollPane = new JScrollPane(messageTextArea);
-        rightPanel.add(messageScrollPane, BorderLayout.CENTER);
-        rightPanel.add(inputPanel, BorderLayout.SOUTH);
+            // Text area to display messages
 
-        // Create a split pane to divide the screen
-        JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, namesPanel, rightPanel);
-        splitPane.setResizeWeight(0.3); // Adjust the divider location
+            JScrollPane messageScrollPane = new JScrollPane(messageTextArea);
+            rightPanel.add(messageScrollPane, BorderLayout.CENTER);
+            rightPanel.add(inputPanel, BorderLayout.SOUTH);
 
-        // Add panels to the content panel
+            // Create a split pane to divide the screen
+            JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, namesPanel, rightPanel);
+            splitPane.setResizeWeight(0.3); // Adjust the divider location
 
-        contentPanel.add(splitPane, BorderLayout.CENTER);
+            // Add panels to the content panel
 
+            contentPanel.add(splitPane, BorderLayout.CENTER);
+        }else{
+            contentPanel.add(new JLabel("You are not following anyone"), BorderLayout.CENTER);
+        }
         // Add content panel to the frame
         add(contentPanel, BorderLayout.CENTER);
+
+        add(Components.getNavigationPanel(), BorderLayout.SOUTH);
     }
 
+    public void resetLabels(ArrayList<JLabel> labels) {
+        for (JLabel label : labels) {
+            label.setBackground(null);
+        }
+    }
 
-    public void sendMessage(String message) throws IOException {
-        synchronized (Server.UserList) {
-            ClientHandler sender = getClientFromName(username);
-            ClientHandler receiver = getClientFromName(recipientUsername);
-            Text text = new Text(username, recipientUsername, message, sender, receiver);
-            text.sendMessage(text);
+    public void setReceipant(String clickedName, JLabel followerLabel){
+        resetLabels(followerLabels);
+        followerLabel.setBackground(Color.WHITE);
+        System.out.println("Clicked: " + clickedName);
+        recipientUsername = clickedName;
+        if (username.compareTo(recipientUsername) < 0) {
+            path = "chats/" + username + recipientUsername + ".txt";
+        } else if (username.compareTo(recipientUsername) > 0) {
+            path = "chats/" + recipientUsername + username + ".txt";
+        } else {
+            System.out.println("Error. Try again.");
+            return;
+        }
+        file = new File(path);
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException exception) {
+                exception.printStackTrace();
+            }
+        }
+        // Here you can perform actions when a name is clicked
+        readFile(path, messageTextArea);
+    }
+
+    public void sendMessage(String message) {
+        try {
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file, true)); // Open the file in append mode
+            writer.write(username + ": " + message); // Write the message to the file
+            writer.newLine(); // Write a newline character to the file
+            writer.close(); // Close the file
+            readFile(path, messageTextArea); // Read the file to update the chat
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -164,7 +194,7 @@ public class ChatUI extends JFrame {
                 fileContent.append(line).append("\n");
             }
             reader.close();
-            // Set the text of fileContentTextArea to the content read from the file
+            // Set the text of messageTextArea to the content read from the file
             messageTextArea.setText(fileContent.toString());
         } catch (IOException e) {
             e.printStackTrace();

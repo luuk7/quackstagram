@@ -36,7 +36,7 @@ public class ImageLikesManager {
             users.add(username); 
             // Record the like in notifications.txt
             String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-            String notification = String.format("%s; %s; %s; %s\n", imageOwner, User.getCurrentUser(), imageID, timestamp);
+            String notification = String.format("%s; %s; %s; %s\n", imageOwner, User.getCurrentUser().getUsername(), imageID, timestamp);
             try (BufferedWriter notificationWriter = Files.newBufferedWriter(Paths.get("data", "notifications.txt"), StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
                 notificationWriter.write(notification);
             } catch (IOException e) {
