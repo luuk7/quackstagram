@@ -140,12 +140,12 @@ public class ExploreUI extends JFrame {
         } catch (IOException ex) {
             imageLabel.setText("Image not found");
         }
-
+        ImageLikesSingleton imageLikesSingleton = ImageLikesSingleton.getInstance();
         // Bottom panel for bio and likes
         JPanel bottomPanel = new JPanel(new BorderLayout());
         JTextArea bioTextArea = new JTextArea(bio);
         bioTextArea.setEditable(false);
-        JLabel likesLabel = new JLabel("🐤 " + ImageLikesManager.getLikesCount(imageID));
+        JLabel likesLabel = new JLabel("🐤 " + imageLikesSingleton.getLikesCount(imageID));
         bottomPanel.add(bioTextArea, BorderLayout.CENTER);
         bottomPanel.add(likesLabel, BorderLayout.SOUTH);
 

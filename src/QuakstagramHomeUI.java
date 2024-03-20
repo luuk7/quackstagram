@@ -28,7 +28,7 @@ public class QuakstagramHomeUI extends JFrame{
         setLayout(new BorderLayout());
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
-        
+
         homePanel = new JPanel(new BorderLayout());
         imageViewPanel = new JPanel(new BorderLayout());
 
@@ -50,7 +50,7 @@ public class QuakstagramHomeUI extends JFrame{
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS)); // Vertical box layout
         JScrollPane scrollPane = new JScrollPane(contentPanel);
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER); // Never allow horizontal scrolling
-        String[][] sampleData = createSampleData(); 
+        String[][] sampleData = createSampleData();
         populateContentPanel(contentPanel, sampleData);
         add(scrollPane, BorderLayout.CENTER);
 
@@ -92,7 +92,7 @@ public class QuakstagramHomeUI extends JFrame{
 
             JLabel likesLabel = new JLabel();
             likesLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
-            likesLabel.setText(postData[2]); 
+            likesLabel.setText(postData[2]);
 
             itemPanel.add(nameLabel);
             itemPanel.add(imageLabel);
@@ -102,14 +102,14 @@ public class QuakstagramHomeUI extends JFrame{
 
             panel.add(itemPanel);
 
-                // Make the image clickable
-                imageLabel.addMouseListener(new MouseAdapter() {
-                    @Override
-                    public void mouseClicked(MouseEvent e) {
-                        displayImage(postData); // Call a method to switch to the image view
-                    }
+            // Make the image clickable
+            imageLabel.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    displayImage(postData); // Call a method to switch to the image view
+                }
             });
-        
+
 
             // Grey spacing panel
             JPanel spacingPanel = new JPanel();
@@ -135,18 +135,22 @@ public class QuakstagramHomeUI extends JFrame{
     }
 
     private void handleLikeAction(String imageID, JLabel likesLabel) {
+        ImageLikesSingleton imageLikesSingleton = ImageLikesSingleton.getInstance();
+
         try {
-            ImageLikesManager.likeImage(User.getCurrentUser().getUsername(), imageID);
+            imageLikesSingleton.likeImage(User.getCurrentUser().getUsername(), imageID);
         } catch (IOException e) {
             e.printStackTrace();
-        } 
+        }
 
         // Update the UI
-        likesLabel.setText("🐤 " + ImageLikesManager.getLikesCount(imageID));
+        likesLabel.setText("🐤 " + imageLikesSingleton.getLikesCount(imageID));
     }
 
-    
+
     private String[][] createSampleData() {
+        ImageLikesSingleton imageLikesSingleton = ImageLikesSingleton.getInstance();
+
         String currentUser = "";
         try (BufferedReader reader = Files.newBufferedReader(Paths.get("data", "users.txt"))) {
             String line = reader.readLine();
@@ -183,7 +187,7 @@ public class QuakstagramHomeUI extends JFrame{
                     String imagePath = "img/uploaded/" + details[0].split(": ")[1] + ".png"; // Assuming PNG format
                     String description = details[2].split(": ")[1];
                     System.out.println(details[0].split(": ")[1]);
-                    String likes = "🐤 " + ImageLikesManager.getLikesCount(details[0].split(": ")[1]);
+                    String likes = "🐤 " + imageLikesSingleton.getLikesCount(details[0].split(": ")[1]);
                     tempData[count++] = new String[]{imagePoster, description, likes, imagePath};
                 }
             }
@@ -206,15 +210,15 @@ public class QuakstagramHomeUI extends JFrame{
         // Display the image
         JLabel fullSizeImageLabel = new JLabel();
         fullSizeImageLabel.setHorizontalAlignment(JLabel.CENTER);
-         try {
-                BufferedImage originalImage = ImageIO.read(new File(postData[3]));
-                BufferedImage croppedImage = originalImage.getSubimage(0, 0, Math.min(originalImage.getWidth(), FrameManager.FRAME_WIDTH-20), Math.min(originalImage.getHeight(), FrameManager.FRAME_HEIGHT-40));
-                ImageIcon imageIcon = new ImageIcon(croppedImage);
-                fullSizeImageLabel.setIcon(imageIcon);
-            } catch (IOException ex) {
-                // Handle exception: Image file not found or reading error
-                fullSizeImageLabel.setText("Image not found");
-            }
+        try {
+            BufferedImage originalImage = ImageIO.read(new File(postData[3]));
+            BufferedImage croppedImage = originalImage.getSubimage(0, 0, Math.min(originalImage.getWidth(), FrameManager.FRAME_WIDTH-20), Math.min(originalImage.getHeight(), FrameManager.FRAME_HEIGHT-40));
+            ImageIcon imageIcon = new ImageIcon(croppedImage);
+            fullSizeImageLabel.setIcon(imageIcon);
+        } catch (IOException ex) {
+            // Handle exception: Image file not found or reading error
+            fullSizeImageLabel.setText("Image not found");
+        }
 
         // User Info 
         JPanel userPanel = new JPanel();
@@ -233,7 +237,7 @@ public class QuakstagramHomeUI extends JFrame{
         imageViewPanel.add(fullSizeImageLabel, BorderLayout.CENTER);
         imageViewPanel.add(infoPanel, BorderLayout.SOUTH);
         imageViewPanel.add(userPanel,BorderLayout.NORTH);
-            
+
         imageViewPanel.revalidate();
         imageViewPanel.repaint();
 
@@ -255,7 +259,7 @@ public class QuakstagramHomeUI extends JFrame{
         } catch (IOException e) {
             e.printStackTrace();
         }
-    
+
         // Call displayImage with updated postData
         displayImage(postData);
     }

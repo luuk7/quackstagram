@@ -28,6 +28,7 @@ public class ChatUI extends JFrame {
         try{
             Client.createClient();
         }catch (IOException e){}
+
     }
 
     private void initializeUI() {
@@ -49,10 +50,18 @@ public class ChatUI extends JFrame {
         messageTextArea = new JTextArea();
         messageTextArea.setEditable(false); // Set the text area to be read-only
 
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                readFile(path, messageTextArea);
+            }
+        }).start();
+
         // Read following.txt and extract names of people following the current user
         try {
             BufferedReader reader = new BufferedReader(new FileReader("data/following.txt"));
             String line;
+
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(":");
                 if (parts.length == 2 && parts[0].trim().equals(User.getCurrentUser().getUsername())) {

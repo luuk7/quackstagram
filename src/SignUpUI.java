@@ -8,7 +8,6 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 
 public class SignUpUI extends JFrame {
-    private final String credentialsFilePath = "data/credentials.txt";
     private final String profilePhotoStoragePath = "img/storage/profile/";
     private JTextField txtUsername;
     private JTextField txtPassword;
@@ -100,11 +99,12 @@ public class SignUpUI extends JFrame {
         String username = txtUsername.getText();
         String password = txtPassword.getText();
         String bio = txtBio.getText();
+        CredentialSingleton credentialSingleton = CredentialSingleton.getInstance();
 
-        if (doesUsernameExist(username)) {
+        if (credentialSingleton.existsUsername(username)) {
             JOptionPane.showMessageDialog(this, "Username already exists. Please choose a different username.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            saveCredentials(username, password, bio);
+            credentialSingleton.add(username,password,bio);
             handleProfilePictureUpload();
             dispose();
 
@@ -113,19 +113,7 @@ public class SignUpUI extends JFrame {
         }
     }
 
-    private boolean doesUsernameExist(String username) {
-        try (BufferedReader reader = new BufferedReader(new FileReader(credentialsFilePath))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (line.startsWith(username + ":")) {
-                    return true;
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
+
 
     // Method to handle profile picture upload
     private void handleProfilePictureUpload() {
@@ -148,14 +136,7 @@ public class SignUpUI extends JFrame {
         }
     }
 
-    private void saveCredentials(String username, String password, String bio) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("data/credentials.txt", true))) {
-            writer.write(username + ":" + password + ":" + bio);
-            writer.newLine();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+
 
     private void openSignInUI() {
         // Open the SignInUI frame

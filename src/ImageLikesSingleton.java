@@ -1,3 +1,4 @@
+import java.awt.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -8,12 +9,20 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class ImageLikesManager {
+public class ImageLikesSingleton {
 
     private static final String likesFilePath = "data/likes.txt";
+    private static ImageLikesSingleton likesSingleton;
 
+    private ImageLikesSingleton(){}
+    public static synchronized ImageLikesSingleton getInstance(){
+        if (likesSingleton == null){
+            likesSingleton = new ImageLikesSingleton();
+        }
+        return likesSingleton;
+    }
     // Method to like an image
-    public static void likeImage(String username, String imageID) throws IOException {
+    public void likeImage(String username, String imageID) throws IOException {
         Map<String, Set<String>> likesMap = readLikes();
         if (!likesMap.containsKey(imageID)) {
             likesMap.put(imageID, new HashSet<>());
@@ -36,7 +45,7 @@ public class ImageLikesManager {
             users.add(username); 
             // Record the like in notifications.txt
             String timestamp = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-            String notification = String.format("%s; %s; %s; %s\n", imageOwner, User.getCurrentUser().getUsername(), imageID, timestamp);
+            String notification = String.format("%s; %s; %s; %s\n", imageOwner, User.getCurrentUser(), imageID, timestamp);
             try (BufferedWriter notificationWriter = Files.newBufferedWriter(Paths.get("data", "notifications.txt"), StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
                 notificationWriter.write(notification);
             } catch (IOException e) {
@@ -49,7 +58,7 @@ public class ImageLikesManager {
     }
 
     // Method to read likes from file
-    private static Map<String, Set<String>> readLikes() throws IOException {
+    public static Map<String, Set<String>> readLikes() throws IOException {
         Map<String, Set<String>> likesMap = new HashMap<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(likesFilePath))) {
             String line;
@@ -65,7 +74,7 @@ public class ImageLikesManager {
         return likesMap;
     }
 
-    public static int getLikesCount(String imageID){
+    public int getLikesCount(String imageID){
         int likes = 0;
         try {
             Map<String, Set<String>> likesMap = readLikes();
@@ -81,7 +90,7 @@ public class ImageLikesManager {
     }
 
     // Method to save likes to file
-    private static void saveLikes(Map<String, Set<String>> likesMap) throws IOException {
+    private void saveLikes(Map<String, Set<String>> likesMap) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(likesFilePath, false))) {
             for (Map.Entry<String, Set<String>> entry : likesMap.entrySet()) {
                 String line = entry.getKey() + ":" + String.join(",", entry.getValue());

@@ -2,9 +2,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserRelationshipManager {
+public class UserRelationshipSingleton {
 
-    private final String followersFilePath = "data/followers.txt";
+    private static final String followersFilePath = "data/followers.txt";
+    private UserRelationshipSingleton(){}
 
     // Method to follow a user
     public void followUser(String follower, String followed) throws IOException {
