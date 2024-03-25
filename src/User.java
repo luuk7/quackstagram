@@ -13,7 +13,7 @@ class User {
     private int postsCount;
     private int followersCount;
     private int followingCount;
-    private List<Picture> pictures;
+    private List<PictureProxy> pictures;
     private static User currentUser;
 
     public User(String username, String bio, String password) {
@@ -48,7 +48,7 @@ class User {
     }
 
     // Add a picture to the user's profile
-    public void addPicture(Picture picture) {
+    public void addPicture(PictureProxy picture) {
         pictures.add(picture);
         postsCount++;
     }
@@ -87,7 +87,7 @@ class User {
         this.followingCount = followingCount;
     }
 
-    public List<Picture> getPictures() {
+    public List<PictureProxy> getPictures() {
         return pictures;
     }
 

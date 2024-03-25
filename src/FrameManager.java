@@ -27,7 +27,8 @@ public class FrameManager{
     public static JFrame getFrame(String type, User user){
         switch (type) {
             case "SIGN_IN":
-                return new SignInUI();
+                FileBasedAuthentication fileBasedAuthentication = new FileBasedAuthentication();
+                return new SignInUI(fileBasedAuthentication);
             case "SIGN_UP":
                 return new SignUpUI();
             case "PROFILE":

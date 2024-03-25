@@ -8,9 +8,11 @@ public class SignInUI extends JFrame {
     private JTextField txtPassword;
     private JButton btnSignIn, btnRegisterNow;
     private JLabel lblPhoto;
+    private AuthenticationStrategy authenticationStrategy;
     private User newUser;
 
-    public SignInUI() {
+    public SignInUI(AuthenticationStrategy authenticationStrategy) {
+        this.authenticationStrategy = authenticationStrategy; // Set the strategy
         setTitle("Quackstagram - Register");
         setLayout(new BorderLayout(10, 10));
         initializeUI();
@@ -77,6 +79,8 @@ public class SignInUI extends JFrame {
         buttonPanel.setBackground(Color.white);
         buttonPanel.add(btnSignIn);
         buttonPanel.add(btnRegisterNow);
+        btnSignIn.addActionListener(this::onSignInClicked);
+        btnRegisterNow.addActionListener(this::onRegisterNowClicked);
 
         // Adding the button panel to the frame
         add(buttonPanel, BorderLayout.SOUTH);
@@ -86,12 +90,15 @@ public class SignInUI extends JFrame {
     private void onSignInClicked(ActionEvent event) {
         String enteredUsername = txtUsername.getText();
         String enteredPassword = txtPassword.getText();
-        System.out.println(enteredUsername + " <-> " + enteredPassword);
-        if (verifyCredentials(enteredUsername, enteredPassword)) {
-            System.out.println("It worked");
+
+        // Use the strategy to authenticate
+        if (authenticationStrategy.authenticate(enteredUsername, enteredPassword)) {
+            System.out.println("Authentication successful");
             FrameManager.openFrame("PROFILE", User.getCurrentUser());
+            // Proceed with navigation or any other action upon successful authentication
         } else {
-            System.out.println("It Didn't work");
+            System.out.println("Authentication failed");
+            // Handle failed authentication
         }
     }
 
