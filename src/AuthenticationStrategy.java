@@ -3,12 +3,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.*;
 
-// AuthenticationStrategy interface
 interface AuthenticationStrategy {
     boolean authenticate(String username, String password);
 }
 
-// Concrete strategy: Simple file-based authentication
 class FileBasedAuthentication implements AuthenticationStrategy {
     @Override
     public boolean authenticate(String username, String password) {

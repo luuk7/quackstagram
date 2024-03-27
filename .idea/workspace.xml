@@ -7,22 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c165c8b-9bb0-4f72-adbc-445918410f94" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/PictureInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_03_2024_21_25_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_03_2024_21_25__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_03_2024_21_25__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_03_2024_21_25__Changes_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/likes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/likes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/notifications.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/notifications.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/quackstagram/FrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/FrameManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/quackstagram/SignInUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/SignInUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/quackstagram/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Picture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Picture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PictureProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PictureProxy.java" afterDir="false" />
-    </list>
+    <list default="true" id="9c165c8b-9bb0-4f72-adbc-445918410f94" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
