@@ -231,7 +231,7 @@ public class QuakstagramHomeUI extends JFrame{
         JPanel infoPanel = new JPanel();
         infoPanel.setLayout(new BoxLayout(infoPanel, BoxLayout.Y_AXIS));
         infoPanel.add(new JLabel(postData[1])); // Description
-        infoPanel.add(new JLabel(postData[2])); // Likes
+        infoPanel.add(likesLabel); // Likes
         infoPanel.add(getLikeButton(imageID, likesLabel));
 
         imageViewPanel.add(fullSizeImageLabel, BorderLayout.CENTER);

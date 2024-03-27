@@ -1,8 +1,6 @@
 import javax.swing.*;
 import java.io.*;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class ClientHandler implements Runnable{
@@ -23,7 +21,6 @@ public class ClientHandler implements Runnable{
     }
     public ClientHandler(Socket clientSocket) throws IOException {
         this.socket = clientSocket;
-        this.name = name;
         this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         this.writer = new PrintWriter(socket.getOutputStream(), true);
         this.scanner = new Scanner(System.in);

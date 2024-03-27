@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -78,9 +77,6 @@ public class ImageLikesSingleton {
         int likes = 0;
         try {
             Map<String, Set<String>> likesMap = readLikes();
-            System.out.println("id: " + imageID);
-            System.out.println(likesMap);
-            System.out.println(likesMap.get(imageID));
             likes = likesMap.get(imageID).size();
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());

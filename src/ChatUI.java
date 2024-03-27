@@ -41,8 +41,6 @@ public class ChatUI extends JFrame {
         fileContentTextArea = new JTextArea();
         fileContentTextArea.setEditable(false); // Set the text area to be read-only
 
-        JScrollPane scrollPane = new JScrollPane(fileContentTextArea);
-
         // Left panel to display names of people
         JPanel namesPanel = new JPanel();
         namesPanel.setLayout(new BoxLayout(namesPanel, BoxLayout.Y_AXIS));

@@ -14,7 +14,6 @@ class User {
     private int followersCount;
     private int followingCount;
     private List<PictureProxy> pictures;
-    private static User currentUser;
 
     public User(String username, String bio, String password) {
         this.username = username;
