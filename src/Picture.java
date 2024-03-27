@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 // Represents a picture on Quackstagram
-class Picture {
+class Picture implements PictureInterface{
     private String imagePath;
     private String caption;
     private int likesCount;

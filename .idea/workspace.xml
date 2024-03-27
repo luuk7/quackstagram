@@ -8,22 +8,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c165c8b-9bb0-4f72-adbc-445918410f94" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/CredentialSingleton.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/PictureInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_03_2024_21_25_[Changes]1/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_03_2024_21_25__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_03_2024_21_25__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_03_2024_21_25__Changes_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_03_2024_21_25__Changes_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_03_2024_21_25__Changes_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chats/LorinMystar.txt" beforeDir="false" afterPath="$PROJECT_DIR$/chats/LorinMystar.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chats/LorinXylo.txt" beforeDir="false" afterPath="$PROJECT_DIR$/chats/LorinXylo.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/users.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/users.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/quackstagram/ChatUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/ChatUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/quackstagram/ChatUI$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/ChatUI$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/quackstagram/ChatUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/ChatUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/quackstagram/ImageLikesManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/ImageLikesManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChatUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageLikesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageLikesSingleton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UserRelationshipManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UserRelationshipSingleton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/likes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/likes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/notifications.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/notifications.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/quackstagram/FrameManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/FrameManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/quackstagram/SignInUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/SignInUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/quackstagram/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Picture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Picture.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PictureProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PictureProxy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,8 +31,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -60,21 +58,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "main",
-    "jdk.selected.JAVA_MODULE": "openjdk-21",
-    "last_opened_file_path": "C:/Users/Dimitris T/Desktop/Projects/quackstagram/src",
-    "onboarding.tips.debug.path": "C:/Users/Dimitris T/Desktop/Projects/quackstagram/SignInUI.java",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-21&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Dimitris T/Desktop/Projects/quackstagram/src&quot;,
+    &quot;onboarding.tips.debug.path&quot;: &quot;C:/Users/Dimitris T/Desktop/Projects/quackstagram/SignInUI.java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Dimitris T\Desktop\Projects\quackstagram\src" />
@@ -131,10 +129,10 @@
     </configuration>
     <list>
       <item itemvalue="Application.App2" />
-      <item itemvalue="Application.Server" />
       <item itemvalue="Application.App" />
-      <item itemvalue="Application.quackstagram.SignInUI" />
+      <item itemvalue="Application.Server" />
       <item itemvalue="Application.SignInUI" />
+      <item itemvalue="Application.quackstagram.SignInUI" />
     </list>
     <recent_temporary>
       <list>
@@ -160,14 +158,18 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/SignInUI.java</url>
-          <line>85</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/ChatUI.java</url>
           <line>52</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/SignInUI.java</url>
+          <line>89</line>
+          <properties class="SignInUI" method="onSignInClicked">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
