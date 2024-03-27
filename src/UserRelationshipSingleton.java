@@ -3,9 +3,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserRelationshipSingleton {
+    private static UserRelationshipSingleton instance;
 
-    private static final String followersFilePath = "data/followers.txt";
+    private static final String followersFilePath = "data/following.txt";
     private UserRelationshipSingleton(){}
+
+    public static synchronized UserRelationshipSingleton getInstance(){
+        if (instance == null){
+            instance = new UserRelationshipSingleton();
+        }
+        return instance;
+    }
 
     // Method to follow a user
     public void followUser(String follower, String followed) throws IOException {
@@ -18,11 +26,11 @@ public class UserRelationshipSingleton {
     }
 
     // Method to check if a user is already following another user
-    private boolean isAlreadyFollowing(String follower, String followed) throws IOException {
-        try (BufferedReader reader = new BufferedReader(new FileReader(followersFilePath))) {
+    public boolean isAlreadyFollowing(String follower, String followed) throws IOException {
+        try (BufferedReader reader = new BufferedReader(new FileReader("data/following.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                if (line.equals(follower + ":" + followed)) {
+                if ((line.contains( " " + followed + ";") || line.contains(" " + followed)) && line.contains(follower + ":")) {
                     return true;
                 }
             }

@@ -7,7 +7,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c165c8b-9bb0-4f72-adbc-445918410f94" name="Changes" comment="" />
+    <list default="true" id="9c165c8b-9bb0-4f72-adbc-445918410f94" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/likes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/likes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/notifications.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/notifications.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/quackstagram/FileBasedAuthentication.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/FileBasedAuthentication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/quackstagram/Picture.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/Picture.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/production/quackstagram/PictureProxy.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/PictureProxy.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ChatUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UserRelationshipSingleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UserRelationshipSingleton.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,7 +76,7 @@
       <recent name="C:\Users\Dimitris T\Desktop\Projects\quackstagram\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="Application.App2">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="App" />
       <module name="quackstagram" />
@@ -142,12 +151,17 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/ChatUI.java</url>
           <line>52</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ChatUI.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/SignInUI.java</url>
           <line>89</line>
           <properties class="SignInUI" method="onSignInClicked">

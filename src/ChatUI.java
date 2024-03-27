@@ -61,26 +61,29 @@ public class ChatUI extends JFrame {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("data/following.txt"));
             String line;
+            UserRelationshipSingleton singleton = UserRelationshipSingleton.getInstance();
 
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(":");
                 if (parts.length == 2 && parts[0].trim().equals(User.getCurrentUser().getUsername())) {
                     String[] followers = parts[1].trim().split(";");
                     for (String follower : followers) {
-                        JLabel followerLabel = new JLabel(follower.trim());
-                        followerLabel.setBorder(new EmptyBorder(20, 20, 20, 20));
+                        if (singleton.isAlreadyFollowing(User.getCurrentUser().getUsername(), follower) && singleton.isAlreadyFollowing(follower, User.getCurrentUser().getUsername())) {
+                            JLabel followerLabel = new JLabel(follower.trim());
+                            followerLabel.setBorder(new EmptyBorder(20, 20, 20, 20));
 
-                        followerLabel.setOpaque(true);
-                        followerLabels.add(followerLabel);
-                        followerLabel.addMouseListener(new MouseAdapter() {
-                            @Override
-                            public void mouseClicked(MouseEvent e) {
-                                // Handle click event
-                                String clickedName = followerLabel.getText();
-                                setReceipant(clickedName, followerLabel);
-                            }
-                        });
-                        namesPanel.add(followerLabel);
+                            followerLabel.setOpaque(true);
+                            followerLabels.add(followerLabel);
+                            followerLabel.addMouseListener(new MouseAdapter() {
+                                @Override
+                                public void mouseClicked(MouseEvent e) {
+                                    // Handle click event
+                                    String clickedName = followerLabel.getText();
+                                    setReceipant(clickedName, followerLabel);
+                                }
+                            });
+                            namesPanel.add(followerLabel);
+                        }
                     }
                 }
             }

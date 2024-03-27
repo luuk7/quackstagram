@@ -1,6 +1,6 @@
 Xylo_1:Lorin
 Xylo_2:
-Zara_1:Test,Lorin
+Zara_1:Test,Lorin,Xylo
 Zara_2:Lorin
 Mystar_1:Lorin
 Mystar_2:Lorin
