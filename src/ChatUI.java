@@ -10,7 +10,6 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class ChatUI extends JFrame {
-
     String username = User.getCurrentUser().getUsername();
     static String recipientUsername;
     File file;
@@ -35,19 +34,14 @@ public class ChatUI extends JFrame {
         // Main content panel
         JPanel contentPanel = new JPanel();
         contentPanel.setLayout(new BorderLayout());
-
-
         // Initialize fileContentTextArea
         fileContentTextArea = new JTextArea();
         fileContentTextArea.setEditable(false); // Set the text area to be read-only
-
         // Left panel to display names of people
         JPanel namesPanel = new JPanel();
         namesPanel.setLayout(new BoxLayout(namesPanel, BoxLayout.Y_AXIS));
-
         messageTextArea = new JTextArea();
         messageTextArea.setEditable(false); // Set the text area to be read-only
-
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -60,7 +54,6 @@ public class ChatUI extends JFrame {
             BufferedReader reader = new BufferedReader(new FileReader("data/following.txt"));
             String line;
             UserRelationshipSingleton singleton = UserRelationshipSingleton.getInstance();
-
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(":");
                 if (parts.length == 2 && parts[0].trim().equals(User.getCurrentUser().getUsername())) {
@@ -69,7 +62,6 @@ public class ChatUI extends JFrame {
                         if (singleton.isAlreadyFollowing(User.getCurrentUser().getUsername(), follower) && singleton.isAlreadyFollowing(follower, User.getCurrentUser().getUsername())) {
                             JLabel followerLabel = new JLabel(follower.trim());
                             followerLabel.setBorder(new EmptyBorder(20, 20, 20, 20));
-
                             followerLabel.setOpaque(true);
                             followerLabels.add(followerLabel);
                             followerLabel.addMouseListener(new MouseAdapter() {
@@ -108,32 +100,23 @@ public class ChatUI extends JFrame {
             });
             inputPanel.add(inputField,BorderLayout.CENTER);
             inputPanel.add(sendButton, BorderLayout.EAST);
-
-
-
             // Right panel to display text messages and input text box
             JPanel rightPanel = new JPanel();
             rightPanel.setLayout(new BorderLayout());
-
             // Text area to display messages
-
             JScrollPane messageScrollPane = new JScrollPane(messageTextArea);
             rightPanel.add(messageScrollPane, BorderLayout.CENTER);
             rightPanel.add(inputPanel, BorderLayout.SOUTH);
-
             // Create a split pane to divide the screen
             JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, namesPanel, rightPanel);
             splitPane.setResizeWeight(0.3); // Adjust the divider location
-
             // Add panels to the content panel
-
             contentPanel.add(splitPane, BorderLayout.CENTER);
         }else{
             contentPanel.add(new JLabel("You are not following anyone"), BorderLayout.CENTER);
         }
         // Add content panel to the frame
         add(contentPanel, BorderLayout.CENTER);
-
         add(Components.getNavigationPanel(), BorderLayout.SOUTH);
     }
 

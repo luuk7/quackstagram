@@ -4,10 +4,6 @@ public class Components {
     private static JPanel navigationPanel;
     private static JPanel headerPanel;
 
-    public Components(){
-        initialize();
-    }
-
     public static void initialize(){
         navigationPanel = NavigationPanel.initializeNavigationPanel();
         headerPanel = HeaderPanel.initializeHeaderPanel("");
