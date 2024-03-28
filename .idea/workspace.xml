@@ -8,13 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9c165c8b-9bb0-4f72-adbc-445918410f94" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_03_2024_21_25__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_16_03_2024_21_25__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/likes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/likes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/notifications.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/notifications.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/quackstagram/FileBasedAuthentication.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/FileBasedAuthentication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/quackstagram/Picture.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/Picture.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/production/quackstagram/PictureProxy.class" beforeDir="false" afterPath="$PROJECT_DIR$/production/quackstagram/PictureProxy.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChatUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/following.txt" beforeDir="false" afterPath="$PROJECT_DIR$/data/following.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UserRelationshipSingleton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UserRelationshipSingleton.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -157,14 +155,14 @@
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/ChatUI.java</url>
-          <line>70</line>
-          <option name="timeStamp" value="8" />
+          <url>file://$PROJECT_DIR$/src/UserRelationshipSingleton.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/SignInUI.java</url>
           <line>89</line>
-          <properties class="SignInUI" method="onSignInClicked">
+          <properties class="SignInUI">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
           </properties>

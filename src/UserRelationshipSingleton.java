@@ -29,8 +29,10 @@ public class UserRelationshipSingleton {
     public boolean isAlreadyFollowing(String follower, String followed) throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader("data/following.txt"))) {
             String line;
+            follower = follower.replace(" ", "");
+            followed = followed.replace(" ", "");
             while ((line = reader.readLine()) != null) {
-                if ((line.contains( " " + followed + ";") || line.contains(" " + followed)) && line.contains(follower + ":")) {
+                if ((line.contains( " " + followed + ";") || line.contains(followed)) && line.contains(follower + ":")) {
                     return true;
                 }
             }
