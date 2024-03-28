@@ -1,6 +1,11 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class SignInUI extends JFrame {
     private JTextField txtUsername;
@@ -91,7 +96,7 @@ public class SignInUI extends JFrame {
 
         // Use the strategy to authenticate
         if (authenticationStrategy.authenticate(enteredUsername, enteredPassword)) {
-            System.out.println("Authentication successful");
+            System.out.println("Authentication successfull: " + enteredUsername);
             FrameManager.openFrame("PROFILE", User.getCurrentUser());
             // Proceed with navigation or any other action upon successful authentication
         } else {
@@ -105,3 +110,4 @@ public class SignInUI extends JFrame {
         FrameManager.openFrame("SIGN_UP", null);
     }
 }
+

@@ -100,7 +100,7 @@ public class SignUpUI extends JFrame {
         String password = txtPassword.getText();
         String bio = txtBio.getText();
         CredentialSingleton credentialSingleton = CredentialSingleton.getInstance();
-
+        System.out.println("Registering user with username: " + username + ", password: " + password + ", bio: " + bio);
         if (credentialSingleton.existsUsername(username)) {
             JOptionPane.showMessageDialog(this, "Username already exists. Please choose a different username.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
